@@ -26,4 +26,6 @@
 
 4. 그 후 PR을 날리고, 코드리뷰를 진행합니다.
     
-    ![image](https://github.com/CAUSWICT-EDU/BE-B/assets/81310047/ff69e144-7aa2-4381-bc50-753dee767ed4)
+    ![image](https://github.com/CAUSWICT-EDU/BE-B/assets/81310047/eaef8878-bef9-49ae-96f6-526bfea247dd)
+
+
