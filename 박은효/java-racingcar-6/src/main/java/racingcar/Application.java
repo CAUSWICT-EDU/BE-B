@@ -1,7 +1,9 @@
 package racingcar;
 
 import racingcar.Entity.Car;
+import racingcar.Entity.Winner;
 import racingcar.Interface.CarInterface;
+import racingcar.Interface.WinnerInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Application {
          */
 
         //CarInterface carInterface = new Car();
+        WinnerInterface winnerInterface = new Winner();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -47,6 +50,7 @@ public class Application {
             System.out.println();
         }
 
+        List<String> winners = winnerInterface.setWinner(cars);
 
     }
 }

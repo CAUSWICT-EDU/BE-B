@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface WinnerInterface {
 
-    public List<String> setWinner(List<Car> cars);
+    public List<String> setWinner(List<CarInterface> cars);
 }

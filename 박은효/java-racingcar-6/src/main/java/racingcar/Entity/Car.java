@@ -21,6 +21,16 @@ public class Car implements CarInterface {
     }
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getLocation() {
+        return location;
+    }
+
+    @Override
     public void goOrStop() {
         int random;
         random = (int)(Math.random() * 10);
