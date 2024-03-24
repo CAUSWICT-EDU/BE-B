@@ -25,6 +25,15 @@ public class Application {
         System.out.println("시도할 회수는 몇회인가요?");
         int t = scanner.nextInt(); //시도 횟수
 
+        String[] carNames = names.split(",");
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            Car car = new Car(carName, 0);
+            cars.add(car);
+        }
+
+        
 
     }
 }
