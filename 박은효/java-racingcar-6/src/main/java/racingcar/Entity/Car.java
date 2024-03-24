@@ -14,7 +14,7 @@ public class Car implements CarInterface {
         this.location = location;
     }
 
-    public void setLocation(int random) {
+    private void setLocation(int random) {
         if (random >= 4) {
             this.location += 1;
         }
