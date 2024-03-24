@@ -4,7 +4,7 @@ package racingcar.Interface;
 
 public interface CarInterface {
 
-    public void goOrStop(CarInterface car);
+    public void goOrStop();
 
-    public void printLocation(CarInterface car);
+    public void printLocation();
 }

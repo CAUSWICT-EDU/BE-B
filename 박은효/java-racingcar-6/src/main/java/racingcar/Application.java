@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.Entity.Car;
+import racingcar.Interface.CarInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ public class Application {
         4. 시도 종료 후 우승자 결정(setWinner)
          */
 
+        //CarInterface carInterface = new Car();
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -26,14 +29,24 @@ public class Application {
         int t = scanner.nextInt(); //시도 횟수
 
         String[] carNames = names.split(",");
-        List<Car> cars = new ArrayList<>();
+        List<CarInterface> cars = new ArrayList<>();
 
         for (String carName : carNames) {
-            Car car = new Car(carName, 0);
+            CarInterface car = new Car(carName, 0);
             cars.add(car);
         }
 
-        
+        for (int i = 0; i < t; i++) {
+            for (CarInterface car : cars) {
+                car.goOrStop();
+            }
+
+            for (CarInterface car : cars) {
+                car.printLocation();
+            }
+            System.out.println();
+        }
+
 
     }
 }
