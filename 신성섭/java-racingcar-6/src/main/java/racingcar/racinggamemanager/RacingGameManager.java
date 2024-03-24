@@ -18,13 +18,12 @@ public class RacingGameManager implements GameManagerImp {
 
     public RacingGameManager(){ }
 
-
     @Override
     public void run() {
         setupGame(); //게임의 초기 설정을 한다.
 
         while ( currentTurn < totalTurn ){
-            currentTurn+=1;
+            currentTurn += 1;
             updateCarMove(); // 모든 자동차의 움직임임을 업데이트 해준다.
             if(currentTurn == 1){
                 System.out.println("실행결과");
@@ -67,7 +66,7 @@ public class RacingGameManager implements GameManagerImp {
         try{
             this.totalTurn = Integer.parseInt(wantedTotalTurn);
 
-        }catch (NumberFormatException e){
+        }catch ( NumberFormatException e ){
             //구현의 조건으로 입력 예외 발생시 애플리케이션 종료를 요구함.
             //실제 프로그램이라면 프로그램의 강제 종료는 복구 불가능한 에러의 경우에만 해야함.
             //반복문을 통해 올바른 값을 입력 하도록 다시 요구하는 것이 옳은 설계 방향.
@@ -79,9 +78,9 @@ public class RacingGameManager implements GameManagerImp {
 
     private void updateCarMove(){
         int carCount = racingCarDb.getCarCount();
-        for (int ithCar = 0; ithCar < carCount; ithCar++){
+        for (int ithCar = 0; ithCar < carCount; ithCar++ ){
             int randomNum = Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM);
-            if (randomNum >= MOVEMENT_LIMIT){
+            if ( randomNum >= MOVEMENT_LIMIT ){
                 racingCarDb.carMove(ithCar);
             }
         }
@@ -89,7 +88,7 @@ public class RacingGameManager implements GameManagerImp {
 
     private void printRoundResult(){
         int carCount = racingCarDb.getCarCount();
-        for (int ithCar =0 ; ithCar < carCount ; ithCar++){
+        for ( int ithCar =0 ; ithCar < carCount ; ithCar++ ){
             CarDTO racingCar = racingCarDb.getCarInformation(ithCar);
             System.out.println(racingCar.getName() + " : " +  "-".repeat(racingCar.getMovementCount()));
         }
@@ -101,7 +100,7 @@ public class RacingGameManager implements GameManagerImp {
         int winnerCount =  winners.size();
 
         System.out.print("최종 우승자 : ");
-        for(int ithCar = 0 ; ithCar < winnerCount-1 ; ithCar++){
+        for( int ithCar = 0 ; ithCar < winnerCount-1 ; ithCar++ ){
             System.out.print(winners.get(ithCar)+", ");
         }
 
@@ -114,17 +113,17 @@ public class RacingGameManager implements GameManagerImp {
         int carCount = racingCarDb.getCarCount();
         int MaxMove=-1;
 
-        for(int ithCar=0; ithCar < carCount; ithCar++){
+        for( int ithCar=0; ithCar < carCount; ithCar++ ){
             CarDTO carInfo = racingCarDb.getCarInformation(ithCar);
 
             String carName= carInfo.getName();
             int movementCount = carInfo.getMovementCount();
 
-            if(MaxMove < movementCount){
+            if( MaxMove < movementCount ){
                 MaxMove = movementCount;
                 MaxCarNames.clear(); // 기존에 있던 차들 이름을 지워주기
                 MaxCarNames.add(carName);
-            } else if (MaxMove == movementCount) {
+            } else if ( MaxMove == movementCount ) {
                 MaxCarNames.add(carName);
             }
 
