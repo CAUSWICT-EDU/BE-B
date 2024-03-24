@@ -28,8 +28,13 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String names = scanner.nextLine();
 
+        int t;
         System.out.println("시도할 회수는 몇회인가요?");
-        int t = scanner.nextInt(); //시도 횟수
+        try {
+            t = scanner.nextInt(); //시도 횟수
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
 
         String[] carNames = names.split(",");
         List<CarInterface> cars = new ArrayList<>();
