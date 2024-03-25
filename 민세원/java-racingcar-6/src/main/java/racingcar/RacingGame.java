@@ -52,21 +52,23 @@ public class RacingGame {
 
     // 우승자 결정 메서드
     void decideFinalWinner(int max) {
-        System.out.print("최종 우승자: ");
-
         // winnerList 우승자들 추가
         for (Car  car : carArray) {
             if (car.moveCount == max) {
                 winnerList.add(car.name);
             }
         }
-        // 우승자 출력
+    }
+
+    // 우승자 출력 메서드
+    void printFinalResult() {
         String finalWinners = String.join(", ", winnerList);
         System.out.println(finalWinners);
     }
 
 
-    // 게임 진행
+
+    // 게임 진행 메서드
     void playGame() {
         System.out.println("실행 결과");
 
@@ -77,6 +79,9 @@ public class RacingGame {
 
         int maxMoveCount = this.getMaxMoveCount();
         this.decideFinalWinner(maxMoveCount);
+
+        System.out.print("최종 우승자: ");
+        this.printFinalResult();
 
     }
 }
