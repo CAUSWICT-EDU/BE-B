@@ -20,6 +20,9 @@ public class StringIO {
             if(s.length()>5)  {
                 throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
             }
+            if(s.length() == 0){
+                throw new IllegalArgumentException("공백 이름은 불가능합니다.");
+            }
         }
     }
     // 출력하는 함수 static

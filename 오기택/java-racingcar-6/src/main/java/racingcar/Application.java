@@ -4,6 +4,7 @@ import entity.Cars;
 import entity.Winner;
 import repository.GamePlay;
 import repository.StringIO;
+
 import java.util.Scanner;
 
 public class Application {
@@ -19,7 +20,11 @@ public class Application {
 
         // 이동 횟수 이력받기
         System.out.println("시도할 회수는 몇회인가요?");
-        int moveInt = scanner.nextInt();
+        int moveInt=0;
+        try{moveInt = scanner.nextInt();}
+        catch (Exception e) {
+            System.err.println("오류 발생 : " + "정수만 입력 가능합니다");
+        }
 
 
 
@@ -31,6 +36,7 @@ public class Application {
             carsList[i] = car;
         }
         for(int i=0;i<moveInt;i++){
+            System.out.println("");
             GamePlay.move(carsList);
             StringIO.locationNow(carsList);
         }
