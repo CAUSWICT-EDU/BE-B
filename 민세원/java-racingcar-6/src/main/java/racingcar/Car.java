@@ -2,8 +2,8 @@ package racingcar;
 
 class Car {
     // 속성
-    String name;
-    int moveCount = 0;
+    protected String name;
+    protected int moveCount = 0;
 
     // 생성자
     Car (String name) {
@@ -11,7 +11,7 @@ class Car {
     }
 
     // 전진 메서드
-    void move() {
+    protected void move() {
         this.moveCount += 1;
     }
 
