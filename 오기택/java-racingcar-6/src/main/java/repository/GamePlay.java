@@ -13,5 +13,4 @@ public class GamePlay {
             if(randomInt() >= 4) car.setLocation();
         }
     }
-
 }
