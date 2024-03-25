@@ -3,11 +3,12 @@ package racingcar;
 import java.util.ArrayList;
 
 public class RacingGame {
-    // TODO: 멤버 변수: 참여자 명단, 우승자 명단, 시도 횟수
+    // 속성
     ArrayList<Car> carArray;
     ArrayList<String> winnerList = new ArrayList<>();
     int roundCount;
 
+    // 생성자
     RacingGame(ArrayList<Car> cars, int roundCount) {
         this.carArray = cars;
         this.roundCount = roundCount;
