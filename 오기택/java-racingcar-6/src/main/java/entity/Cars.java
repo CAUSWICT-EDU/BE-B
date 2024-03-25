@@ -22,5 +22,10 @@ public class Cars {
         return this.name;
     }
 
+    // 이동
+    public void setLocation(){
+        this.location +="-";
+    }
+
 
 }
