@@ -12,6 +12,7 @@ public class Application {
 
         //사용자 입력
         carNameList = inputCarName();
+        if(carNameList == null)     return;
         N = inputTryNumber();
         
         //게임 시작
@@ -40,6 +41,7 @@ public class Application {
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return null;
         }
         return carNameList;
     }
