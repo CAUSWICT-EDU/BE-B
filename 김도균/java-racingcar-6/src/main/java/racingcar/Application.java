@@ -16,7 +16,7 @@ public class Application {
         
         //게임 시작
         Game carGame = new Game(carNameList, N);
-//        carGame.run();
+        carGame.run();
         
         //게임 결과
         
