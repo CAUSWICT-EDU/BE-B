@@ -17,9 +17,10 @@ public class Application {
         //게임 시작
         Game carGame = new Game(carNameList, N);
         carGame.run();
-        
+
         //게임 결과
-        
+        List<String> winners = carGame.whoWinner();
+
         //결과 출력
     }
 
