@@ -14,13 +14,9 @@ public class Application {
         carNameList = inputCarName();
         N = inputTryNumber();
         
-//        //입력 테스트
-//        for(String carName : carNameList){
-//            System.out.println(carName);
-//        }
-//        System.out.println(N);
-        
         //게임 시작
+        Game carGame = new Game(carNameList, N);
+//        carGame.run();
         
         //게임 결과
         
