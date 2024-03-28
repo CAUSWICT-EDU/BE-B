@@ -22,6 +22,11 @@ public class Application {
         List<String> winners = carGame.whoWinner();
 
         //결과 출력
+        // 리스트 요소를 쉼표와 함께 출력하는 람다 표현식
+        String result = winners.stream().collect(Collectors.joining(", "));
+
+        // 최종 결과 출력
+        System.out.println("최종 우승자: " + result);
     }
 
     static String[] inputCarName(){
