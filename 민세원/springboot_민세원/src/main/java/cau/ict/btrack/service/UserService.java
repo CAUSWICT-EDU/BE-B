@@ -2,6 +2,7 @@ package cau.ict.btrack.service;
 
 import cau.ict.btrack.domain.User;
 import cau.ict.btrack.dto.ResponseSimpleUserDto;
+import cau.ict.btrack.dto.UserRegisterDto;
 import cau.ict.btrack.exception.BaseException;
 import cau.ict.btrack.repository.UserRepository;
 import cau.ict.btrack.util.ResponseCode;
@@ -26,5 +27,9 @@ public class UserService {
         } else {
             throw new BaseException(ResponseCode.USER_NOT_FOUND);
         }
+    }
+
+    public User createUser(UserRegisterDto user) {
+        return userRepository.save(user.toEntity());
     }
 }

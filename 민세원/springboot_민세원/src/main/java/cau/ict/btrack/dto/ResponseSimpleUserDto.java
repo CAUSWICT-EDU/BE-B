@@ -14,3 +14,4 @@ public class ResponseSimpleUserDto {
     private int height; // 키
     private int age; // 나이
 }
+

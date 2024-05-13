@@ -1,13 +1,12 @@
 package cau.ict.btrack.controller;
 
+import cau.ict.btrack.domain.User;
 import cau.ict.btrack.dto.ResponseSimpleUserDto;
+import cau.ict.btrack.dto.UserRegisterDto;
 import cau.ict.btrack.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
@@ -21,5 +20,10 @@ public class UserController {
     public ResponseEntity<ResponseSimpleUserDto> getSimpleUserInfo(@PathVariable Long userId) {
         ResponseSimpleUserDto userInfo = userService.getSimpleUserInfo(userId);
         return ResponseEntity.ok(userInfo);
+    }
+
+    @PostMapping("")
+    public User createUser(@RequestBody UserRegisterDto user) {
+        return userService.createUser(user);
     }
 }
