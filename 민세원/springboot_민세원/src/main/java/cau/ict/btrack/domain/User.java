@@ -1,17 +1,16 @@
 package cau.ict.btrack.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id; // 기본키
 
@@ -21,7 +20,7 @@ public class User {
 
     private int weight; // 몸무게
 
-    private int gender; // 성별 (0, 1)
+    private int gender; // 성별
 
     private int age; // 나이
 
