@@ -1,10 +1,8 @@
 package cau.ict.btrack.dto;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class ResponseSimpleUserDto {
 
     private String name;
@@ -12,4 +10,10 @@ public class ResponseSimpleUserDto {
     private int height;
 
     private int age;
+
+    public ResponseSimpleUserDto(String name, int height, int age) {
+        this.name = name;
+        this.height = height;
+        this.age = age;
+    }
 }

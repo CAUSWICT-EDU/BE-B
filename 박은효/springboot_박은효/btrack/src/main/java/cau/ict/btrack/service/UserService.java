@@ -2,7 +2,9 @@ package cau.ict.btrack.service;
 
 import cau.ict.btrack.domain.User;
 import cau.ict.btrack.dto.ResponseSimpleUserDto;
+import cau.ict.btrack.exception.BaseException;
 import cau.ict.btrack.repository.UserRepository;
+import cau.ict.btrack.util.ResponseCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,12 @@ public class UserService {
 
     public ResponseSimpleUserDto getSimpleUserInfo(Long userId) {
         Optional<User> user = userRepository.findById(userId);
-        ResponseSimpleUserDto dto = new ResponseSimpleUserDto();
-        dto.setName(user.get().getName());
-        dto.setHeight(user.get().getHeight());
-        dto.setAge(user.get().getAge());
+        if (user.isPresent()) {
+            ResponseSimpleUserDto dto = new ResponseSimpleUserDto(user.get().getName(), user.get().getHeight(), user.get().getAge());
+            return dto;
+        } else {
+            throw new BaseException(ResponseCode.USER_NOT_FOUND);
+        }
 
-        return dto;
     }
 }
