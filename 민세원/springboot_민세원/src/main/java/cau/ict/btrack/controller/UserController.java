@@ -1,7 +1,7 @@
 package cau.ict.btrack.controller;
 
+import cau.ict.btrack.dto.ResponseSimpleUserDto;
 import cau.ict.btrack.service.UserService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +17,9 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("{user_id}/info/simple")
-    public ResponseEntity<ResponseSimpleDto> getSimpleUserInfo(@PathVariable Long userId) {
-        ResponseSimpleDto userInfo = userService.getSimpleUserInfo(userId);
+    @GetMapping("{userId}/info/simple")
+    public ResponseEntity<ResponseSimpleUserDto> getSimpleUserInfo(@PathVariable Long userId) {
+        ResponseSimpleUserDto userInfo = userService.getSimpleUserInfo(userId);
         return ResponseEntity.ok(userInfo);
     }
 }
