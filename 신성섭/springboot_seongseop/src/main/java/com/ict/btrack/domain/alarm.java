@@ -13,11 +13,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class alarm extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(length = 100)
-    private String title ;
+    private String title;
 
     @Lob
-    private String content ;
+    private String content;
 
     private LocalDateTime alarmTime;
 

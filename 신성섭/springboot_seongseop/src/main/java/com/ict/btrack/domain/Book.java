@@ -14,6 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 public class Book extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(nullable = false, length = 50)
     private String title;
 
@@ -21,7 +25,7 @@ public class Book extends BaseEntity {
     private String description;
 
     @OneToMany(mappedBy ="book" ,cascade = CascadeType.ALL)
-    private List<BookHashTag> BookHashTags;
+    private List<BookHashTag> BookHashTags = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")

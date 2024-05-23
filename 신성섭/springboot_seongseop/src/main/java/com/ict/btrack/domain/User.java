@@ -11,6 +11,7 @@ import lombok.Setter;
 @Entity
 public class User {
 
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id; // 기본키
