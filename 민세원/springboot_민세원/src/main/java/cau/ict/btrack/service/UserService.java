@@ -6,6 +6,7 @@ import cau.ict.btrack.dto.RequestUserRegisterDto;
 import cau.ict.btrack.exception.BaseException;
 import cau.ict.btrack.repository.UserRepository;
 import cau.ict.btrack.util.ResponseCode;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,11 +17,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public ResponseSimpleUserDto getSimpleUserInfo(Long userId) {
-        User user = userRepository.findById(userId)
+    public User getSimpleUserInfo(Long userId) {
+        return userRepository.findById(userId)
                 .orElseThrow(()->new BaseException(ResponseCode.USER_NOT_FOUND));
-
-        return new ResponseSimpleUserDto(user.getName(), user.getHeight(), user.getAge());
     }
 
     public User createUser(RequestUserRegisterDto userDto) {
