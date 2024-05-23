@@ -2,13 +2,11 @@ package cau.ict.btrack.service;
 
 import cau.ict.btrack.domain.User;
 import cau.ict.btrack.dto.ResponseSimpleUserDto;
-import cau.ict.btrack.dto.UserRegisterDto;
+import cau.ict.btrack.dto.RequestUserRegisterDto;
 import cau.ict.btrack.exception.BaseException;
 import cau.ict.btrack.repository.UserRepository;
 import cau.ict.btrack.util.ResponseCode;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -19,17 +17,22 @@ public class UserService {
     }
 
     public ResponseSimpleUserDto getSimpleUserInfo(Long userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(()->new BaseException(ResponseCode.USER_NOT_FOUND));
 
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            return new ResponseSimpleUserDto(user.getName(), user.getHeight(), user.getAge());
-        } else {
-            throw new BaseException(ResponseCode.USER_NOT_FOUND);
-        }
+        return new ResponseSimpleUserDto(user.getName(), user.getHeight(), user.getAge());
     }
 
-    public User createUser(UserRegisterDto user) {
-        return userRepository.save(user.toEntity());
+    public User createUser(RequestUserRegisterDto userDto) {
+        User user = new User();
+        user.setName(userDto.getName());
+        user.setHeight(userDto.getHeight());
+        user.setWeight(userDto.getWeight());
+        user.setGender(userDto.getGender());
+        user.setAge(userDto.getAge());
+
+        return userRepository.save(user);
     }
+
+
 }
