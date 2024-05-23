@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Like {
+public class LikeMap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
