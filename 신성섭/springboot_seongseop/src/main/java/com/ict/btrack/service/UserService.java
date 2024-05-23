@@ -16,17 +16,18 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public void setUserRepository(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 
     public ResponseSimpleUserDto getSimpleUserInfo(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        if(user.isPresent()){
-            return new ResponseSimpleUserDto(user.get().getName(), user.get().getHeight(), user.get().getAge() );
-        }else{
-             throw new BaseException(ResponseCode.USER_NOT_FOUND);
-        }
+        return userRepository.findById(userId)
+                .map(user -> new ResponseSimpleUserDto(user.getName(), user.getHeight(), user.getAge()))
+                .orElseThrow(() -> new BaseException(ResponseCode.USER_NOT_FOUND));
 
     }
 }
