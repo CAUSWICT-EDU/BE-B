@@ -6,32 +6,23 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private boolean isReturned;
 
-    private String nickName;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
-    private String email;
-
-    private String password;
-
-    private String phone;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    @OneToMany(mappedBy = "member")
-    private List<Rent> rents;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 }

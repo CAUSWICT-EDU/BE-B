@@ -1,13 +1,12 @@
 package cau.ict.btrack.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,6 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Book {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String subject;
@@ -27,4 +27,9 @@ public class Book {
     @Enumerated(EnumType.STRING)
     private BookCategory Category;
 
+    @OneToMany(mappedBy = "book")
+    private List<Rent> rents;
+
+    @OneToMany(mappedBy = "book")
+    private List<HashTagMap> hashTagMaps;
 }

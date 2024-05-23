@@ -14,24 +14,14 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class HashTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String content;
 
-    private String nickName;
+    @OneToMany(mappedBy = "hashTag")
+    private List<HashTagMap> hashTagMaps;
 
-    private String email;
-
-    private String password;
-
-    private String phone;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    @OneToMany(mappedBy = "member")
-    private List<Rent> rents;
 }
