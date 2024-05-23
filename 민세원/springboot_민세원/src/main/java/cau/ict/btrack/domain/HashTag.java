@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,9 +20,10 @@ public class HashTag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 100)
     private String content;
 
-    @OneToMany(mappedBy = "hashTag")
-    private List<HashTagMap> hashTagMaps;
+    @OneToMany(mappedBy = "hashTag", cascade = CascadeType.ALL)
+    private List<HashTagMap> hashTagMaps = new ArrayList<>();
 
 }

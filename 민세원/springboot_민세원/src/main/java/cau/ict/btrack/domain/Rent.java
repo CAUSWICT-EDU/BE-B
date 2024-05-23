@@ -16,7 +16,8 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean isReturned;
+    @Column(nullable = false)
+    private boolean isReturned = false; // default
 
     @ManyToOne
     @JoinColumn(name = "member_id")

@@ -19,19 +19,24 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 100)
     private String name;
 
+    @Column(nullable = false, length = 100)
     private String nickName;
 
+    @Column(nullable = false, length = 100)
     private String email;
 
+    @Column(nullable = false, length = 500)
     private String password;
 
+    @Column(nullable = false, length = 100)
     private String phone;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Rent> rents;
 }
