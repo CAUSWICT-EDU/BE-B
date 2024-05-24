@@ -16,6 +16,11 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    public static User findUserByIdOrThrow(UserRepository userRepository, Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new BaseException(ResponseCode.USER_NOT_FOUND));
+    }
+
     public ResponseSimpleUserDto getSimpleUserInfo(Long userId) {
 //        Optional<User> user = userRepository.findById(userId);
 //        if (user.isPresent()) {
@@ -24,9 +29,8 @@ public class UserService {
 //        } else {
 //            throw new BaseException(ResponseCode.USER_NOT_FOUND);
 //        }
-        Optional<User> user = userRepository.findById(userId);
-        User foundUser = user.orElseThrow(() -> new BaseException(ResponseCode.USER_NOT_FOUND));
-        ResponseSimpleUserDto dto = new ResponseSimpleUserDto(foundUser.getName(), foundUser.getHeight(), foundUser.getAge());
+        Optional<User> user = Optional.ofNullable(findUserByIdOrThrow(userRepository, userId));
+        ResponseSimpleUserDto dto = new ResponseSimpleUserDto(user.get().getName(), user.get().getHeight(), user.get().getAge());
         return dto;
 
     }
