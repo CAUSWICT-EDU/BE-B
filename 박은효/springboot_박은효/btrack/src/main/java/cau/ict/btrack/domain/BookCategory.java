@@ -21,6 +21,6 @@ public class BookCategory extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    @OneToMany(mappedBy = "bookCategory", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bookCategory", cascade = CascadeType.PERSIST)
     private List<Book> bookList = new ArrayList<>();
 }

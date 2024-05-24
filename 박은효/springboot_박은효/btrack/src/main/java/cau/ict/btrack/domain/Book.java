@@ -23,13 +23,13 @@ public class Book extends BaseEntity {
 
     private String description;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST)
     private List<Rent> rentList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST)
     private List<BookHashTag> bookHashTagList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST)
     private List<BookLikes> bookLikesList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)

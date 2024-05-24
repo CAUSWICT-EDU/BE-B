@@ -36,13 +36,13 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<Alarm> alarmList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<Rent> rentList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<BookLikes> bookLikesList = new ArrayList<>();
 
 }
