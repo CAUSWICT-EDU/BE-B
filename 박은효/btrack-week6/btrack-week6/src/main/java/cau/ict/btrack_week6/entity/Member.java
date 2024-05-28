@@ -4,6 +4,9 @@ import cau.ict.btrack_week6.entity.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -17,4 +20,6 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
+    @OneToMany(mappedBy = "member")
+    private List<Post> postList = new ArrayList<>();
 }
