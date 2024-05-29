@@ -1,5 +1,6 @@
 package cau.ict.btrack_week6.service;
 
+import cau.ict.btrack_week6.converter.PostConverter;
 import cau.ict.btrack_week6.dto.NewPostDto;
 import cau.ict.btrack_week6.dto.PostDto;
 import cau.ict.btrack_week6.entity.Comment;
@@ -23,7 +24,7 @@ public class PostService {
 
     public void createPost(String title, String body, Member member) {
         NewPostDto newPostDto = new NewPostDto(title, body, member);
-
+        postRepository.save(PostConverter.toPost(newPostDto));
     }
 
     public PostDto readOnePost(String postTitle) {

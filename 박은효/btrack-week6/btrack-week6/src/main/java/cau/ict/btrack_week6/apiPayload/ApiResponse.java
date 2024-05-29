@@ -21,7 +21,7 @@ public class ApiResponse<T> {
     private T result;
 
     public static <T> ApiResponse<T> onSuccess(T result) {
-        return new ApiResponse<>(true, Authenticator.SuccessStatus._OK.getCode(), SuccessStatus._OK.getMessage(), result);
+        return new ApiResponse<>(true, Authenticator.Success._OK.getCode(), SuccessStatus._OK.getMessage(), result);
     }
 
     public static <T> ApiResponse<T> of(BaseCode code, T result) {
