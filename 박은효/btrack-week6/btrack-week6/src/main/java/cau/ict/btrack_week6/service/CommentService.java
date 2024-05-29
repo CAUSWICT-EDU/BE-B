@@ -13,10 +13,6 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    public List<Comment> findAllByPost(Long postId) {
-        return commentRepository.findAllByPostId(postId);
-    }
-
     public List<Comment> findAllByMember(Long memberId) {
         return commentRepository.findAllByMemberId(memberId);
     }

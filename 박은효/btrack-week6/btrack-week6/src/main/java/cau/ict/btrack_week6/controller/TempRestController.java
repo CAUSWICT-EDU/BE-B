@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TempRestController {
 
-    @GetMapping("/test")
-    public ApiResponse<TempResponse.TempTestDto> testApi() {
-        return ApiResponse.onSuccess(TempConverter.toTempTestDto());
-    }
+//    @GetMapping("/test")
+//    public ApiResponse<TempResponse.TempTestDto> testApi() {
+//        return ApiResponse.onSuccess(TempConverter.toTempTestDto());
+//    }
 }
