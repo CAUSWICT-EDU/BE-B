@@ -1,5 +1,6 @@
 package cau.ict.btrack_week6.service;
 
+import cau.ict.btrack_week6.apiPayload.exception.GeneralException;
 import cau.ict.btrack_week6.converter.PostConverter;
 import cau.ict.btrack_week6.dto.NewPostDto;
 import cau.ict.btrack_week6.dto.PostDto;
@@ -42,11 +43,15 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public void updatePost() {
-
+    public void updatePost(Long id, String newTitle, String newBody) {
+        Optional<Post> findPost = postRepository.findById(id);
+        if (findPost.isPresent()) {
+            findPost.get().update(newTitle, newBody);
+            postRepository.save(findPost.get());
+        }
     }
 
-    public void deletePost() {
-
+    public void deletePost(Long id) {
+        postRepository.deleteById(id);
     }
 }

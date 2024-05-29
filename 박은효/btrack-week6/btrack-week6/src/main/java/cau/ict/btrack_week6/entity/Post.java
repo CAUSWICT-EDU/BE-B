@@ -30,4 +30,9 @@ public class Post extends BaseEntity {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> commentList = new ArrayList<>();
 
+    public void update(String newTitle, String newBody) {
+        this.title = newTitle;
+        this.body = newBody;
+    }
+
 }

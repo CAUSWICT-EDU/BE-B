@@ -4,7 +4,7 @@ import java.awt.desktop.UserSessionEvent;
 import java.security.cert.CertPathValidatorException;
 
 public interface BaseCode {
-    public CertPathValidatorException.Reason getReason();
+    public Reason getReason();
 
-    public UserSessionEvent.Reason getReasonHttpStatus();
+    public Reason getReasonHttpStatus();
 }
