@@ -1,5 +1,7 @@
 package cau.ict.btrack_week6.service;
 
+import cau.ict.btrack_week6.apiPayload.code.status.ErrorStatus;
+import cau.ict.btrack_week6.apiPayload.exception.GeneralException;
 import cau.ict.btrack_week6.converter.PostConverter;
 import cau.ict.btrack_week6.dto.NewPostDto;
 import cau.ict.btrack_week6.dto.PostDto;
@@ -20,6 +22,11 @@ public class PostService {
 
     private final PostRepository postRepository;
 
+    private Post findPostByIdOrThrow(Long postId) {
+        Optional<Post> post = postRepository.findById(postId);
+        return post.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
+    }
+
     public Long createPost(String title, String body, Member member) {
         NewPostDto newPostDto = new NewPostDto(title, body, member);
         Post post = PostConverter.toPost(newPostDto);
@@ -28,30 +35,31 @@ public class PostService {
     }
 
     public PostDto readOneByTitle(String postTitle) {
-        Optional<Post> findPost = postRepository.findByTitle(postTitle);
-        if (findPost.isEmpty()) {
-            log.warn("There is no post.");
-            return null;
-        } else {
-            return PostDto.of(findPost.get());
-        }
+        Optional<Post> post = postRepository.findByTitle(postTitle);
+        Post findPost = post.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
+        return PostDto.of(findPost);
+//        if (findPost.isEmpty()) {
+//            log.warn("There is no post.");
+//            return null;
+//        } else {
+//            return PostDto.of(findPost.get());
+//        }
     }
 
     public PostDto readOneByMember(Member member) {
-        Optional<Post> findPost = postRepository.findByMemberId(member.getId());
-        if (findPost.isEmpty()) {
-            log.warn("There is no post.");
-            return null;
-        } else {
-            return PostDto.of(findPost.get());
-        }
+        Optional<Post> post = postRepository.findByMemberId(member.getId());
+        Post findPost = post.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
+        return PostDto.of(findPost);
+//        if (findPost.isEmpty()) {
+//            log.warn("There is no post.");
+//            return null;
+//        } else {
+//            return PostDto.of(findPost.get());
+//        }
     }
 
     public Post readOneById(Long id) {
-        Optional<Post> post = postRepository.findById(id);
-        if (post.isPresent()) {
-            return post.get();
-        } else throw new RuntimeException();
+        return findPostByIdOrThrow(id);
     }
 
     public List<Post> readAll() {
@@ -59,11 +67,13 @@ public class PostService {
     }
 
     public void updatePost(Long id, String newTitle, String newBody) {
-        Optional<Post> findPost = postRepository.findById(id);
-        if (findPost.isPresent()) {
-            findPost.get().update(newTitle, newBody);
-            postRepository.save(findPost.get());
-        }
+        Post findPost = findPostByIdOrThrow(id);
+        findPost.update(newTitle, newBody);
+        postRepository.save(findPost);
+//        if (findPost.isPresent()) {
+//            findPost.get().update(newTitle, newBody);
+//            postRepository.save(findPost.get());
+//        }
     }
 
     public void deletePost(Long id) {
