@@ -20,6 +20,9 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
+    @Column(nullable = false)
+    private String password;
+
     @OneToMany(mappedBy = "member")
     private List<Post> postList = new ArrayList<>();
 }
