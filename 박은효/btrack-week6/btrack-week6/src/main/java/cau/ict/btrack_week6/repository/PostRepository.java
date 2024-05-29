@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     Optional<Post> findByTitle(String postTitle);
+
+    Optional<Post> findByMemberId(Long id);
 }
