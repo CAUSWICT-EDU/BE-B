@@ -23,6 +23,9 @@ public class Member extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member") //member 객체가 삭제되어도 게시글은 남아 있도록
     private List<Post> postList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Comment> commentList = new ArrayList<>();
 }
