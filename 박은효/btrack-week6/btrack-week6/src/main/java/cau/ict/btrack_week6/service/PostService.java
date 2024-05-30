@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    private Post findPostByIdOrThrow(Long postId) {
+    private Post findPostByIdOrThrow(Long postId) { //postId로 post를 찾아오고, 찾지 못한 경우 Error를 발생시키는 함수
         Optional<Post> post = postRepository.findById(postId);
         return post.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
     }
@@ -46,10 +47,15 @@ public class PostService {
 //        }
     }
 
-    public PostDto readOneByMember(Member member) {
-        Optional<Post> post = postRepository.findByMemberId(member.getId());
-        Post findPost = post.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
-        return PostDto.of(findPost);
+    public List<PostDto> readAllByMember(Member member) {
+        Optional<List<Post>> postList = postRepository.findByMemberId(member.getId());
+        List<Post> findPost = postList.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
+        List<PostDto> result = new ArrayList<>();
+
+        for (Post post : findPost) {
+            result.add(PostDto.of(post));
+        }
+        return result;
 //        if (findPost.isEmpty()) {
 //            log.warn("There is no post.");
 //            return null;

@@ -28,13 +28,13 @@ public class CommentController {
         commentService.createComment(body, member);
     }
 
-    @GetMapping("/comment/all/member")
+    @GetMapping("/comment/find/all/member")
     public List<Comment> findAll(HttpServletRequest request) {
         Member member = getMember(request);
         return commentService.findAllByMember(member.getId());
     }
 
-    @GetMapping("/commen/one/id/{id}")
+    @GetMapping("/commen/find/one/id/{id}")
     public Comment findOneById(@RequestParam(name = "id") Long id) {
         return commentService.readOneById(id);
     }
