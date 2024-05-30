@@ -6,10 +6,7 @@ import cau.ict.btrack_week6.service.CommentService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,10 +17,26 @@ public class CommentController {
 
     private final CommentService commentService;
 
+    private Member getMember(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        return (Member) session.getAttribute("member");
+    }
+
+    @PostMapping("/comment/create")
+    public void create(String body, HttpServletRequest request) {
+        Member member = getMember(request);
+        commentService.createComment(body, member);
+    }
+
     @GetMapping("/comment/all/member")
     public List<Comment> findAll(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Member member = (Member) session.getAttribute("member");
+        Member member = getMember(request);
         return commentService.findAllByMember(member.getId());
     }
+
+    @GetMapping("/commen/one/id/{id}")
+    public Comment findOneById(@RequestParam(name = "id") Long id) {
+        return commentService.readOneById(id);
+    }
+
 }
