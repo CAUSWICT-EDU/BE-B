@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.boardcrud.domain.base.BaseEntity;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "member")
@@ -31,6 +29,4 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 500, name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Post> posts = new ArrayList<>();
 }

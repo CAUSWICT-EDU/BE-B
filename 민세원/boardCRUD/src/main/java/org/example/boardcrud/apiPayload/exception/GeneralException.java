@@ -3,7 +3,7 @@ package org.example.boardcrud.apiPayload.exception;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.boardcrud.apiPayload.code.BaseErrorCode;
-import org.example.boardcrud.apiPayload.code.ErrorReasonDTO;
+import org.example.boardcrud.apiPayload.code.ErrorReasonDto;
 
 @Getter
 @AllArgsConstructor
@@ -11,11 +11,11 @@ public class GeneralException extends RuntimeException {
 
     private BaseErrorCode code;
 
-    public ErrorReasonDTO getErrorReasonDTO() {
+    public ErrorReasonDto getErrorReasonDTO() {
         return this.code.getReason();
     }
 
-    public ErrorReasonDTO getErrorReasonHttpStatus() {
+    public ErrorReasonDto getErrorReasonHttpStatus() {
         return this.code.getReasonHttpStatus();
     }
 

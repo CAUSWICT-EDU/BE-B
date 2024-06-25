@@ -1,7 +1,7 @@
 package org.example.boardcrud.apiPayload.code;
 
 public interface BaseCode {
-    public ReasonDTO getReason();
+    public ReasonDto getReason();
 
-    public ReasonDTO getReasonHttpStatus();
+    public ReasonDto getReasonHttpStatus();
 }

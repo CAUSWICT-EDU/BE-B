@@ -1,7 +1,7 @@
 package org.example.boardcrud.apiPayload.code;
 
 public interface BaseErrorCode {
-    public ErrorReasonDTO getReason();
+    public ErrorReasonDto getReason();
 
-    public ErrorReasonDTO getReasonHttpStatus();
+    public ErrorReasonDto getReasonHttpStatus();
 }
