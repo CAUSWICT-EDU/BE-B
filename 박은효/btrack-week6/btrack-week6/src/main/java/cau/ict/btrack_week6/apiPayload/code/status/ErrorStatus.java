@@ -24,7 +24,10 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // 게시글, 댓글 관련 에러
     POST_NOT_FOUND(HttpStatus.NOT_FOUND, "POST4001", "게시글이 없습니다."),
-    COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "POST4002", "댓글이 없습니다.");
+    COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "POST4002", "댓글이 없습니다."),
+
+    // For test
+    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");
 
 
     private final HttpStatus httpStatus;
