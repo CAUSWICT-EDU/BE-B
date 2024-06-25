@@ -3,6 +3,7 @@ package org.example.boardcrud.controller;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.example.boardcrud.apiPayload.ApiResponse;
+import org.example.boardcrud.apiPayload.code.status.SuccessStatus;
 import org.example.boardcrud.dto.auth.RequestAuth;
 import org.example.boardcrud.dto.auth.ResponseAuth;
 import org.example.boardcrud.service.AuthService;
@@ -21,7 +22,7 @@ public class AuthController {
             @RequestBody RequestAuth.RegisterDto registerDto
     ) {
         ResponseAuth.MemberDto memberDto = authService.register(registerDto);
-        return ApiResponse.onSuccess(memberDto);
+        return ApiResponse.of(SuccessStatus._CREATED, memberDto);
     }
 
     // 로그인
@@ -30,7 +31,7 @@ public class AuthController {
             @RequestBody RequestAuth.LoginDto loginDto
     ) {
         ResponseAuth.MemberDto memberDto = authService.login(loginDto);
-        return ApiResponse.onSuccess(memberDto);
+        return ApiResponse.of(SuccessStatus._OK, memberDto);
     }
 
 }

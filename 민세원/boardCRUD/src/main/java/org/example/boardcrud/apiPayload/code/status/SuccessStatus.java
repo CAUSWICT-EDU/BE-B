@@ -17,8 +17,8 @@ public enum SuccessStatus implements BaseCode {
     POST_CREATED(HttpStatus.CREATED, "POST201", "게시글 작성이 성공하였습니다."),
     POST_UPDATED(HttpStatus.OK, "POST200", "게시글 수정이 성공하였습니다."),
     POST_DELETED(HttpStatus.OK, "POST200", "게시글 삭제가 성공하였습니다."),
-    POST_LIST(HttpStatus.OK, "POST200", "게시글 목록 조회가 성공하였습니다."),
-    POST_GET(HttpStatus.OK, "POST200", "단일 게시글 조회가 성공하였습니다."),
+    POST_GET_LIST(HttpStatus.OK, "POST200", "게시글 목록 조회가 성공하였습니다."),
+    POST_GET_DETAIL(HttpStatus.OK, "POST200", "단일 게시글 조회가 성공하였습니다."),
     ;
 
     private final HttpStatus httpStatus;
