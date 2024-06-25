@@ -1,0 +1,63 @@
+### 회원가입
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password",
+  "name": "John Doe"
+}
+
+###
+
+### 로그인
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password"
+}
+
+###
+
+### 게시글 작성
+POST http://localhost:8080/api/posts
+Content-Type: application/json
+
+{
+  "title": "New Post",
+  "content": "This is the content of the post.",
+  "email": "user@example.com"
+}
+
+###
+
+### 게시글 목록 조회
+GET http://localhost:8080/api/posts?page=0&size=10&sort=createdAt,desc
+Content-Type: application/json
+
+###
+
+### 게시글 수정
+PUT http://localhost:8080/api/posts/123
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "content": "Updated content of the post."
+}
+
+###
+
+### 게시글 삭제
+DELETE http://localhost:8080/api/posts/1
+Content-Type: application/json
+
+###
+
+### 게시글 조회
+GET http://localhost:8080/api/posts/1
+Content-Type: application/json
+
+###
