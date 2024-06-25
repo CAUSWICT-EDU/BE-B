@@ -49,13 +49,7 @@ public class PostService {
 
     public List<PostDto> readAllByMember(Member member) {
         Optional<List<Post>> postList = postRepository.findByMemberId(member.getId());
-        List<Post> findPost = postList.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
-        List<PostDto> result = new ArrayList<>();
-
-        for (Post post : findPost) {
-            result.add(PostDto.of(post));
-        }
-        return result;
+        return getPostDtos(postList);
 //        if (findPost.isEmpty()) {
 //            log.warn("There is no post.");
 //            return null;
@@ -64,12 +58,24 @@ public class PostService {
 //        }
     }
 
-    public Post readOneById(Long id) {
-        return findPostByIdOrThrow(id);
+    public PostDto readOneById(Long id) {
+        return PostDto.of(findPostByIdOrThrow(id));
     }
 
-    public List<Post> readAll() {
-        return postRepository.findAll();
+    public List<PostDto> readAll() {
+        Optional<List<Post>> postList = Optional.of(postRepository.findAll());
+        return getPostDtos(postList);
+    }
+
+    private List<PostDto> getPostDtos(Optional<List<Post>> postList) {
+        List<Post> findPost = postList.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
+        List<PostDto> result = new ArrayList<>();
+
+        for (Post post : findPost) {
+            result.add(PostDto.of(post));
+        }
+
+        return result;
     }
 
     public void updatePost(Long id, String newTitle, String newBody) {

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/post")
 @RequiredArgsConstructor
 public class PostController {
 
@@ -24,24 +24,32 @@ public class PostController {
         return (Member) session.getAttribute("member");
     }
 
-    @PostMapping("/post/create")
-    public Post create(String title, String body, HttpServletRequest request) {
+    @PostMapping("/create")
+    public PostDto create(String title, String body, HttpServletRequest request) {
         Member member = getMember(request);
         Long postId = postService.createPost(title, body, member);
         return postService.readOneById(postId);
     }
 
-    @GetMapping("/post/find/one/title/{title}")
-    public PostDto findOneByTitle(@RequestParam(name = "title") String title) {
+    @GetMapping("/find/one/title/{title}")
+    public PostDto findOneByTitle(@PathVariable String title) {
         return postService.readOneByTitle(title);
     }
 
-    @GetMapping("/post/find/all/member")
+    @GetMapping("/find/all/member")
     public List<PostDto> findAllByMember(HttpServletRequest request) {
         Member member = getMember(request);
         return postService.readAllByMember(member);
     }
 
+    @GetMapping("/find/all")
+    public List<PostDto> findAll() {
+        return postService.readAll();
+    }
 
+    @PostMapping("/update")
+    public void update(Long id, @RequestBody PostDto postDto) {
+        postService.updatePost(id, postDto.getTitle(), postDto.getBody());
+    }
 
 }
