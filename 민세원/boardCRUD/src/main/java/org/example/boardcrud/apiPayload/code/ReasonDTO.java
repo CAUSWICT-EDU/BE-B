@@ -1,13 +1,16 @@
 package org.example.boardcrud.apiPayload.code;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Builder
+@Getter
 public class ReasonDTO {
     private String message;
 
-    private int code; // 성공한 경우는 int로 받음
+    private String code;
 
     private boolean isSuccess;
 

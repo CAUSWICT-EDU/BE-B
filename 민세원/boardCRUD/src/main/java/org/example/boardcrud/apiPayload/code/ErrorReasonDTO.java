@@ -1,13 +1,15 @@
 package org.example.boardcrud.apiPayload.code;
 
 import lombok.Builder;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Builder
+@Getter
 public class ErrorReasonDTO {
     private String message;
 
-    private String code; // 실패한 경우는 String으로 받음(자세한 사항 표시하기 위해서)
+    private String code;
 
     private boolean isSuccess;
 
