@@ -18,7 +18,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // 회원 관련 에러
     MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBER_1001", "해당하는 ID의 사용자가 없습니다."),
-    MEMBER_ALREADY_EXISTS(HttpStatus.CONFLICT, "MEMBER_1002", "이미 존재하는 유저입니다."),
+    MEMBER_ALREADY_EXISTS(HttpStatus.CONFLICT, "MEMBER_1002", "이미 존재하는 ID 입니다."),
     MEMBER_ID_NULL(HttpStatus.BAD_REQUEST, "MEMBER_1003", "사용자 아이디는 필수 입니다."),
     MEMBER_NAME_NULL(HttpStatus.BAD_REQUEST, "MEMBER_1004", "닉네임 입력은 필수 입니다."),
     MEMBER_INCORRECT_PW(HttpStatus.FORBIDDEN, "MEMBER_1005", "비밀번호가 일치하지 않습니다.");
