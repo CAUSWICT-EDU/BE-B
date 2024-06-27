@@ -38,7 +38,17 @@ public class Member extends BaseEntity {
     @ColumnDefault("'ACTIVE'")
     private MemberStatus status;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> writtenPosts = new ArrayList<>();
+
+    public void setNickName(String nickName){
+        if(nickName != null){
+            this.nickName = nickName;
+        }
+    }
+
+    public void addPost(Post post){
+        this.writtenPosts.add(post);
+    }
 
 }
