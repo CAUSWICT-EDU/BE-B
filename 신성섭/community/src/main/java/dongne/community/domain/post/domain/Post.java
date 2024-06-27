@@ -32,10 +32,14 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    public void changeTitleAndContent(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     public void setIsDeleted(Boolean isDeleted) {
         if(isDeleted != null) {
             this.isDeleted = isDeleted;
         }
     }
-
 }

@@ -21,9 +21,11 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_ALREADY_EXISTS(HttpStatus.CONFLICT, "MEMBER_4002", "이미 존재하는 ID 입니다."),
     MEMBER_ID_NULL(HttpStatus.BAD_REQUEST, "MEMBER_4003", "사용자 아이디는 필수 입니다."),
     MEMBER_NAME_NULL(HttpStatus.BAD_REQUEST, "MEMBER_4004", "닉네임 입력은 필수 입니다."),
-    MEMBER_INCORRECT_PW(HttpStatus.FORBIDDEN, "MEMBER_4005", "비밀번호가 일치하지 않습니다.");
+    MEMBER_INCORRECT_PW(HttpStatus.FORBIDDEN, "MEMBER_4005", "비밀번호가 일치하지 않습니다."),
 
     //게시물(Post 관련 에러)
+    POST_NOT_FOUND(HttpStatus.BAD_REQUEST, "POST_4001", "해당하는 게시물이 없습니다."),
+    POST_EDIT_NOT_ALLOWED(HttpStatus.UNAUTHORIZED, "POST_4002", "게시물은 작성자만 변경할수 있습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
