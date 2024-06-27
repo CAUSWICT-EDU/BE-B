@@ -4,7 +4,7 @@ import dongne.community.domain.member.domain.Member;
 import dongne.community.domain.member.domain.repository.MemberRepository;
 import dongne.community.domain.member.dto.request.LoginRequestDto;
 import dongne.community.domain.member.dto.request.RegisterRequestDto;
-import dongne.community.domain.member.dto.request.nickNameUpdateRequestDto;
+import dongne.community.domain.member.dto.request.NickNameUpdateRequestDto;
 import dongne.community.domain.member.dto.response.MemberResponseDto;
 import dongne.community.global.apipayload.code.status.ErrorStatus;
 import dongne.community.global.exception.handler.MemberExceptionHandler;
@@ -53,7 +53,7 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public MemberResponseDto updateMemberInfo(nickNameUpdateRequestDto nickNameUpdateDto) {
+    public MemberResponseDto updateMemberInfo(NickNameUpdateRequestDto nickNameUpdateDto) {
         Member member = entityValidator.validateMember(nickNameUpdateDto.getSignId());
 
         member.setNickName(nickNameUpdateDto.getNickName());

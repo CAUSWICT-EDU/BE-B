@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class nickNameUpdateRequestDto {
+public class NickNameUpdateRequestDto {
 
     @NotBlank(message = "ID는 필수입니다.")
     private String signId;
