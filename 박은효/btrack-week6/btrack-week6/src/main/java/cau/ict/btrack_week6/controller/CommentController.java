@@ -22,20 +22,20 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    private ApiResponse<MemberResponse.MemberDto> getMember(HttpServletRequest request) {
+    private Member getMember(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        return ApiResponse.of(SuccessStatus.COMMENT_READ_SUCCESS, MemberResponse.MemberDto.of((Member) session.getAttribute("member")));
+        return (Member) session.getAttribute("member");
     }
 
     @PostMapping("/comment/create")
     public ApiResponse<CommentDto> create(String body, HttpServletRequest request) {
-        Member member = MemberConverter.toMember(getMember(request).getResult());
+        Member member = getMember(request);
         return ApiResponse.of(SuccessStatus.COMMENT_CREATE_SUCCESS, commentService.createComment(body, member));
     }
 
     @GetMapping("/comment/find/all/member")
     public List<Comment> findAll(HttpServletRequest request) {
-        Member member = MemberConverter.toMember(getMember(request).getResult());
+        Member member = getMember(request);
         return commentService.findAllByMember(member.getId());
     }
 
