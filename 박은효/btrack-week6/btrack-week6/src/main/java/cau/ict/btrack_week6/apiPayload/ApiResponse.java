@@ -1,6 +1,7 @@
 package cau.ict.btrack_week6.apiPayload;
 
 import cau.ict.btrack_week6.apiPayload.code.BaseCode;
+import cau.ict.btrack_week6.apiPayload.code.status.SuccessStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -21,7 +22,7 @@ public class ApiResponse<T> {
     private T result;
 
     public static <T> ApiResponse<T> onSuccess(T result) {
-        return new ApiResponse<>(true, Authenticator.Success._OK.getCode(), SuccessStatus._OK.getMessage(), result);
+        return new ApiResponse<>(true, SuccessStatus._OK.getCode(), SuccessStatus._OK.getMessage(), result);
     }
 
     public static <T> ApiResponse<T> of(BaseCode code, T result) {
