@@ -20,10 +20,11 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    public void createComment(String body, Member member) {
+    public CommentDto createComment(String body, Member member) {
         CommentDto commentDto = new CommentDto(body, member);
         Comment comment = CommentConverter.toComment(commentDto);
         commentRepository.save(comment);
+        return commentDto;
     }
 
     public Comment readOneById(Long id) {

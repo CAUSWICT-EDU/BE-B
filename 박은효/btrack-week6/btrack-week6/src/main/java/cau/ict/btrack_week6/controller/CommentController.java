@@ -1,6 +1,9 @@
 package cau.ict.btrack_week6.controller;
 
 import cau.ict.btrack_week6.apiPayload.ApiResponse;
+import cau.ict.btrack_week6.apiPayload.code.status.SuccessStatus;
+import cau.ict.btrack_week6.converter.MemberConverter;
+import cau.ict.btrack_week6.dto.CommentDto;
 import cau.ict.btrack_week6.dto.MemberResponse;
 import cau.ict.btrack_week6.entity.Comment;
 import cau.ict.btrack_week6.entity.Member;
@@ -19,26 +22,26 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    private Member getMember(HttpServletRequest request) {
+    private ApiResponse<MemberResponse.MemberDto> getMember(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        return (Member) session.getAttribute("member");
+        return ApiResponse.of(SuccessStatus.COMMENT_READ_SUCCESS, MemberResponse.MemberDto.of((Member) session.getAttribute("member")));
     }
 
     @PostMapping("/comment/create")
-    public ApiResponse<MemberResponse> create(String body, HttpServletRequest request) {
-        Member member = getMember(request);
-        commentService.createComment(body, member);
+    public ApiResponse<CommentDto> create(String body, HttpServletRequest request) {
+        Member member = MemberConverter.toMember(getMember(request).getResult());
+        return ApiResponse.of(SuccessStatus.COMMENT_CREATE_SUCCESS, commentService.createComment(body, member));
     }
 
     @GetMapping("/comment/find/all/member")
     public List<Comment> findAll(HttpServletRequest request) {
-        Member member = getMember(request);
+        Member member = MemberConverter.toMember(getMember(request).getResult());
         return commentService.findAllByMember(member.getId());
     }
 
     @GetMapping("/commen/find/one/id/{id}")
-    public Comment findOneById(@RequestParam(name = "id") Long id) {
-        return commentService.readOneById(id);
+    public ApiResponse<CommentDto> findOneById(@RequestParam(name = "id") Long id) {
+        return ApiResponse.of(SuccessStatus.COMMENT_READ_SUCCESS, CommentDto.of(commentService.readOneById(id)));
     }
 
 }

@@ -1,5 +1,7 @@
 package cau.ict.btrack_week6.controller;
 
+import cau.ict.btrack_week6.apiPayload.ApiResponse;
+import cau.ict.btrack_week6.apiPayload.code.status.SuccessStatus;
 import cau.ict.btrack_week6.converter.MemberConverter;
 import cau.ict.btrack_week6.dto.MemberResponse;
 import cau.ict.btrack_week6.entity.Member;
@@ -17,11 +19,9 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/member/new")
-    public Member join(String name, String password) {
+    public ApiResponse<MemberResponse.MemberDto> join(String name, String password) {
         MemberResponse.MemberDto memberDto = new MemberResponse.MemberDto(name, password);
         Member member = MemberConverter.toMember(memberDto);
-        memberService.join(member);
-
-        return member;
+        return ApiResponse.of(SuccessStatus.MEMBER_JOIN_SUCCESS, memberService.join(member));
     }
 }
