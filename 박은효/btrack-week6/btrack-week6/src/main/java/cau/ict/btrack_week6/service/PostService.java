@@ -27,11 +27,11 @@ public class PostService {
         return post.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
     }
 
-    public Long createPost(String title, String body, Member member) {
+    public PostResponse.NewPostDto createPost(String title, String body, Member member) {
         PostResponse.NewPostDto newPostDto = new PostResponse.NewPostDto(title, body, member);
         Post post = PostConverter.toPost(newPostDto);
         postRepository.save(post);
-        return post.getId();
+        return newPostDto;
     }
 
     public PostResponse.PostDto readOneByTitle(String postTitle) {
@@ -77,7 +77,7 @@ public class PostService {
         return result;
     }
 
-    public void updatePost(Long id, String newTitle, String newBody) {
+    public PostResponse.PostDto updatePost(Long id, String newTitle, String newBody) {
         Post findPost = findPostByIdOrThrow(id);
         findPost.update(newTitle, newBody);
         postRepository.save(findPost);
@@ -85,6 +85,7 @@ public class PostService {
 //            findPost.get().update(newTitle, newBody);
 //            postRepository.save(findPost.get());
 //        }
+        return PostResponse.PostDto.of(findPost);
     }
 
     public void deletePost(Long id) {

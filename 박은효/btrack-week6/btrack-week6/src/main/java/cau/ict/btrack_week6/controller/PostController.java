@@ -1,5 +1,7 @@
 package cau.ict.btrack_week6.controller;
 
+import cau.ict.btrack_week6.apiPayload.ApiResponse;
+import cau.ict.btrack_week6.apiPayload.code.status.SuccessStatus;
 import cau.ict.btrack_week6.dto.PostResponse;
 import cau.ict.btrack_week6.entity.Member;
 import cau.ict.btrack_week6.service.PostService;
@@ -23,31 +25,30 @@ public class PostController {
     }
 
     @PostMapping("/create")
-    public PostResponse.PostDto create(String title, String body, HttpServletRequest request) {
+    public ApiResponse<PostResponse.NewPostDto> create(String title, String body, HttpServletRequest request) {
         Member member = getMember(request);
-        Long postId = postService.createPost(title, body, member);
-        return postService.readOneById(postId);
+        return ApiResponse.of(SuccessStatus.POST_CREATE_SUCCESS, postService.createPost(title, body, member));
     }
 
     @GetMapping("/find/one/title/{title}")
-    public PostResponse.PostDto findOneByTitle(@PathVariable String title) {
-        return postService.readOneByTitle(title);
+    public ApiResponse<PostResponse.PostDto> findOneByTitle(@PathVariable String title) {
+        return ApiResponse.of(SuccessStatus.POST_READ_SUCCESS, postService.readOneByTitle(title));
     }
 
     @GetMapping("/find/all/member")
-    public List<PostResponse.PostDto> findAllByMember(HttpServletRequest request) {
+    public ApiResponse<List<PostResponse.PostDto>> findAllByMember(HttpServletRequest request) {
         Member member = getMember(request);
-        return postService.readAllByMember(member);
+        return ApiResponse.of(SuccessStatus.POST_READ_SUCCESS, postService.readAllByMember(member));
     }
 
     @GetMapping("/find/all")
-    public List<PostResponse.PostDto> findAll() {
-        return postService.readAll();
+    public ApiResponse<List<PostResponse.PostDto>> findAll() {
+        return ApiResponse.of(SuccessStatus.POST_READ_SUCCESS, postService.readAll());
     }
 
     @PostMapping("/update")
-    public void update(Long id, @RequestBody PostResponse.PostDto postDto) {
-        postService.updatePost(id, postDto.getTitle(), postDto.getBody());
+    public ApiResponse<PostResponse.PostDto> update(Long id, @RequestBody PostResponse.PostDto postDto) {
+        return ApiResponse.of(SuccessStatus.POST_UPDATE_SUCCESS, postService.updatePost(id, postDto.getTitle(), postDto.getBody()));
     }
 
 }
