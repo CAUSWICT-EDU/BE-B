@@ -1,5 +1,7 @@
 package board.board.service;
 
+import board.board.apiPayload.code.status.ErrorStatus;
+import board.board.apiPayload.exception.handler.MemberHandler;
 import board.board.converter.MemberConverter;
 import board.board.domain.Member;
 import board.board.dto.member.MemberRequest;
@@ -17,7 +19,7 @@ public class MemberService {
     @Transactional
     public MemberResponse.MemberDto join(MemberRequest.JoinDto joinDto){
         if(memberRepository.existsMemberByEmail(joinDto.getEmail())){
-            return null;
+            throw new MemberHandler(ErrorStatus.MEMBER_DUPLICATE);
         }
 
         Member member = MemberConverter.JoinDtoToMember(joinDto);
@@ -28,9 +30,9 @@ public class MemberService {
 
     @Transactional
     public MemberResponse.MemberDto login(MemberRequest.LoginDto loginDto){
-        Member member = memberRepository.findByEmail(loginDto.getEmail()).orElseThrow(() -> new Error());
+        Member member = memberRepository.findByEmail(loginDto.getEmail()).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         if (!member.getPassword().equals(loginDto.getPassword())) {
-            throw new Error();
+            throw new MemberHandler(ErrorStatus.MEMBER_FORBIDDEN);
         }
 
         return MemberConverter.MemberToMemberDto(member);

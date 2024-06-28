@@ -20,6 +20,7 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER404", "멤버를 찾을 수 없습니다."),
     MEMBER_DUPLICATE(HttpStatus.CONFLICT, "MEMBER409", "이미 존재하는 멤버입니다."),
     MEMBER_UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "MEMBER401", "멤버 인증이 되지 않았습니다."),
+    MEMBER_FORBIDDEN(HttpStatus.FORBIDDEN, "MEMBER403", "아이디 또는 비밀번호가 잘못되었습니다."),
 
     // 게시글 관련 응답
     BOARD_NOT_FOUND(HttpStatus.NOT_FOUND, "BOARD404", "게시글을 찾을 수 없습니다."),

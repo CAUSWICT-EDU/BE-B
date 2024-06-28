@@ -19,13 +19,13 @@ public class Member extends DateEntity {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(length = 50, name = "member_name", nullable = false)
+    @Column(length = 50, nullable = false)
     private String name;
 
-    @Column(length = 50, unique = true, nullable = false, name = "member_email")
+    @Column(length = 50, unique = true, nullable = false)
     private String email;
 
-    @Column(length = 50, name = "member_password", nullable = false)
+    @Column(length = 50, nullable = false)
     private String password;
 
 }

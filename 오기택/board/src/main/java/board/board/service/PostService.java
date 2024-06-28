@@ -1,5 +1,8 @@
 package board.board.service;
 
+import board.board.apiPayload.code.status.ErrorStatus;
+import board.board.apiPayload.exception.handler.MemberHandler;
+import board.board.apiPayload.exception.handler.PostHandler;
 import board.board.converter.PostConverter;
 import board.board.domain.Member;
 import board.board.domain.Post;
@@ -19,7 +22,7 @@ public class PostService {
 
     @Transactional
     public PostResponse.PostDto create(PostRequest.CreateDto createDto){
-        Member member = memberRepository.findByEmail(createDto.getEmail()).orElseThrow(() -> new Error());
+        Member member = memberRepository.findByEmail(createDto.getEmail()).orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
 
         Post post = PostConverter.CreateDtoToPost(createDto,member);
         postRepository.save(post);
@@ -29,13 +32,13 @@ public class PostService {
 
     @Transactional
     public PostResponse.PostDto getPost(Long id){
-        Post post = postRepository.findById(id).orElseThrow(() -> new Error());
+        Post post = postRepository.findById(id).orElseThrow(() -> new PostHandler(ErrorStatus.BOARD_NOT_FOUND));
         return PostConverter.PostToPostDto(post);
     }
 
     @Transactional
     public PostResponse.PostDto update(PostRequest.UpdateDto updateDto){
-        Post post = postRepository.findById(updateDto.getPostId()).orElseThrow(() -> new Error());
+        Post post = postRepository.findById(updateDto.getPostId()).orElseThrow(() -> new PostHandler(ErrorStatus.BOARD_NOT_FOUND));
 
         post.updateTitleAndContent(updateDto.getTitle(),updateDto.getContent());
 

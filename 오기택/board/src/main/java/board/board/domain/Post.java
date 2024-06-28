@@ -18,14 +18,14 @@ public class Post extends DateEntity {
     @Column(name = "post_id")
     private Long id;
 
-    @Column(length = 200, name = "post_title", nullable = false)
+    @Column(length = 200, nullable = false)
     private String title;
 
-    @Column(nullable = false, name = "post_content", columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     public void updateTitleAndContent(String title, String content){
