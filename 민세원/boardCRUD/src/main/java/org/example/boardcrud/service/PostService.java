@@ -25,14 +25,14 @@ public class PostService {
     private final PostRepository postRepository;
 
     @Transactional
-    public Long createPost(RequestPost.CreateDto createDto) {
+    public ResponsePost.DetailInfoDto createPost(RequestPost.CreateDto createDto) {
         Member member = memberRepository.findByEmail(createDto.getEmail())
                 .orElseThrow(() -> new AuthExceptionHandler(ErrorStatus._UNAUTHORIZED));
 
         Post newPost = PostConverter.createDtoToPost(createDto, member);
         postRepository.save(newPost);
 
-        return newPost.getId();
+        return PostConverter.postToDetailInfoDto(newPost);
     }
 
     @Transactional(readOnly = true)
@@ -43,11 +43,13 @@ public class PostService {
     }
 
     @Transactional
-    public void editPost(RequestPost.EditDto editDto, Long postId) {
+    public ResponsePost.DetailInfoDto editPost(RequestPost.EditDto editDto, Long postId) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new PostExceptionHandler(ErrorStatus.POST_NOT_FOUND));
         post.changeTitleAndContent(editDto.getTitle(), editDto.getContent());
         postRepository.save(post);
+
+        return PostConverter.postToDetailInfoDto(post);
     }
 
     @Transactional

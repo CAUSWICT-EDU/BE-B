@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController()
 @RequestMapping("/api/posts")
@@ -20,12 +19,10 @@ public class PostController {
 
     // 게시글 작성
     @PostMapping()
-    public ApiResponse<Long> createPost(
+    public ApiResponse<ResponsePost.DetailInfoDto> createPost(
             @RequestBody RequestPost.CreateDto createDto
     ) {
-        Long postId = postService.createPost(createDto);
-
-        return ApiResponse.of(SuccessStatus.POST_CREATED, postId);
+        return ApiResponse.of(SuccessStatus.POST_CREATED, postService.createPost(createDto));
     }
 
     // 게시글 목록 조회
@@ -34,19 +31,17 @@ public class PostController {
     public ApiResponse<List<ResponsePost.InfoDto>> getPosts(
             Pageable pageable
     ) {
-        List<ResponsePost.InfoDto> postInfos = postService.getPosts(pageable);
-        return ApiResponse.of(SuccessStatus.POST_GET_LIST, postInfos);
+        return ApiResponse.of(SuccessStatus.POST_GET_LIST, postService.getPosts(pageable));
 
     }
 
     // 게시글 수정
     @PutMapping("/{postId}")
-    public ApiResponse<Long> editPost(
+    public ApiResponse<ResponsePost.DetailInfoDto> editPost(
             @RequestBody RequestPost.EditDto editDto,
             @PathVariable Long postId
     ) {
-        postService.editPost(editDto, postId);
-        return ApiResponse.of(SuccessStatus.POST_UPDATED, postId);
+        return ApiResponse.of(SuccessStatus.POST_UPDATED, postService.editPost(editDto, postId));
     }
 
     // 게시글 삭제
@@ -63,8 +58,7 @@ public class PostController {
     public ApiResponse<ResponsePost.DetailInfoDto> getPostDetail(
             @PathVariable Long postId
     ) {
-        ResponsePost.DetailInfoDto postDetail = postService.getPostDetail(postId);
-        return ApiResponse.of(SuccessStatus.POST_GET_DETAIL, postDetail);
+        return ApiResponse.of(SuccessStatus.POST_GET_DETAIL, postService.getPostDetail(postId));
     }
 
 }

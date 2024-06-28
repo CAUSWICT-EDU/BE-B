@@ -33,6 +33,7 @@ public class PostConverter {
     public static ResponsePost.DetailInfoDto postToDetailInfoDto(Post post) {
 
         return ResponsePost.DetailInfoDto.builder()
+                .postId(post.getId())
                 .title(post.getTitle())
                 .content(post.getContent())
                 .writer(post.getMember().getName())
