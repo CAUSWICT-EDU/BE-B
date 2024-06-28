@@ -1,0 +1,66 @@
+# GitHub repository actions 페이지에 나타날 이름
+name: CI/CD using GitHub Actions & Docker
+
+# Event trigger: main 브랜치에 push가 되었을 때 실행
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  CI-CD:
+    runs-on: ubuntu-latest
+    steps:
+      # JDK 설정 - GitHub Actions에서 사용할 JDK 설정 (프로젝트나 AWS의 Java 버전과 달라도 무방)
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # application.yml 파일 생성
+      - name: Make application.yml
+        run: |
+          mkdir -p ./src/main/resources # resources 폴더 생성
+          cd ./src/main/resources # resources 폴더로 이동
+          touch ./application.yml # application.yml 생성
+          echo "${{ secrets.YML }}" > ./application.yml # GitHub Actions에서 설정한 값을 application.yml 파일에 쓰기
+        shell: bash
+
+      # application-prod.yml 파일 생성
+      - name: Make application-prod.yml
+        run: |
+          cd ./src/main/resources
+          touch ./application-prod.yml
+          echo "${{ secrets.YML_PROD }}" > ./application-prod.yml
+        shell: bash
+
+      # Gradle 빌드
+      - name: Build with Gradle
+        run: ./gradlew build -x test
+
+      # Docker 빌드 및 프로덕션으로 푸시
+      - name: Docker build & push to prod
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/docker-test-prod .
+          docker push ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
+
+      # 프로덕션에 배포
+      - name: Deploy to prod
+        uses: appleboy/ssh-action@master
+        id: deploy-prod
+        with:
+          host: ${{ secrets.HOST_PROD }} # EC2 퍼블릭 IPv4 DNS
+          username: ubuntu
+          port : 22
+          key: ${{ secrets.PRIVATE_KEY }}
+          envs: GITHUB_SHA
+          script: |
+            sudo docker ps
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
+            sudo docker run -d -p 8082:8082 ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
+            sudo docker image prune -f
