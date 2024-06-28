@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 public enum SuccessStatus implements BaseCode {
 
     // 멤버 관련 응답
+    _OK(HttpStatus.OK, "AUTH200", "로그인이 성공하였습니다."),
     MEMBER_CREATED(HttpStatus.CREATED, "MEMBER201", "멤버가 성공적으로 생성되었습니다."),
     MEMBER_UPDATED(HttpStatus.OK, "MEMBER200", "멤버 정보가 성공적으로 업데이트되었습니다."),
     MEMBER_DELETED(HttpStatus.OK, "MEMBER200", "멤버가 성공적으로 삭제되었습니다."),

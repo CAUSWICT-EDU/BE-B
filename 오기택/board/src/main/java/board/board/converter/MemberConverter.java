@@ -13,7 +13,7 @@ public class MemberConverter {
                 .build();
     }
 
-    public static MemberResponse.MemberDto MemberDtoToMember(Member member) {
+    public static MemberResponse.MemberDto MemberToMemberDto(Member member) {
 
         return MemberResponse.MemberDto.builder()
                 .email(member.getEmail())

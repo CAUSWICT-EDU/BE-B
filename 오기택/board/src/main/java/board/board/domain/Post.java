@@ -27,4 +27,9 @@ public class Post extends DateEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "member_id")
     private Member member;
+
+    public void updateTitleAndContent(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
 }
