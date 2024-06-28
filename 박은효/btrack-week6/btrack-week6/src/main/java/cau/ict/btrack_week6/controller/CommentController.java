@@ -1,5 +1,7 @@
 package cau.ict.btrack_week6.controller;
 
+import cau.ict.btrack_week6.apiPayload.ApiResponse;
+import cau.ict.btrack_week6.dto.MemberResponse;
 import cau.ict.btrack_week6.entity.Comment;
 import cau.ict.btrack_week6.entity.Member;
 import cau.ict.btrack_week6.service.CommentService;
@@ -23,7 +25,7 @@ public class CommentController {
     }
 
     @PostMapping("/comment/create")
-    public void create(String body, HttpServletRequest request) {
+    public ApiResponse<MemberResponse> create(String body, HttpServletRequest request) {
         Member member = getMember(request);
         commentService.createComment(body, member);
     }

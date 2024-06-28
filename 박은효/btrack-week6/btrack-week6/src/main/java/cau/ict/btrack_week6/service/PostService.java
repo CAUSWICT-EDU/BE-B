@@ -3,8 +3,7 @@ package cau.ict.btrack_week6.service;
 import cau.ict.btrack_week6.apiPayload.code.status.ErrorStatus;
 import cau.ict.btrack_week6.apiPayload.exception.GeneralException;
 import cau.ict.btrack_week6.converter.PostConverter;
-import cau.ict.btrack_week6.dto.NewPostDto;
-import cau.ict.btrack_week6.dto.PostDto;
+import cau.ict.btrack_week6.dto.PostResponse;
 import cau.ict.btrack_week6.entity.Member;
 import cau.ict.btrack_week6.entity.Post;
 import cau.ict.btrack_week6.repository.PostRepository;
@@ -29,16 +28,16 @@ public class PostService {
     }
 
     public Long createPost(String title, String body, Member member) {
-        NewPostDto newPostDto = new NewPostDto(title, body, member);
+        PostResponse.NewPostDto newPostDto = new PostResponse.NewPostDto(title, body, member);
         Post post = PostConverter.toPost(newPostDto);
         postRepository.save(post);
         return post.getId();
     }
 
-    public PostDto readOneByTitle(String postTitle) {
+    public PostResponse.PostDto readOneByTitle(String postTitle) {
         Optional<Post> post = postRepository.findByTitle(postTitle);
         Post findPost = post.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
-        return PostDto.of(findPost);
+        return PostResponse.PostDto.of(findPost);
 //        if (findPost.isEmpty()) {
 //            log.warn("There is no post.");
 //            return null;
@@ -47,7 +46,7 @@ public class PostService {
 //        }
     }
 
-    public List<PostDto> readAllByMember(Member member) {
+    public List<PostResponse.PostDto> readAllByMember(Member member) {
         Optional<List<Post>> postList = postRepository.findByMemberId(member.getId());
         return getPostDtos(postList);
 //        if (findPost.isEmpty()) {
@@ -58,21 +57,21 @@ public class PostService {
 //        }
     }
 
-    public PostDto readOneById(Long id) {
-        return PostDto.of(findPostByIdOrThrow(id));
+    public PostResponse.PostDto readOneById(Long id) {
+        return PostResponse.PostDto.of(findPostByIdOrThrow(id));
     }
 
-    public List<PostDto> readAll() {
+    public List<PostResponse.PostDto> readAll() {
         Optional<List<Post>> postList = Optional.of(postRepository.findAll());
         return getPostDtos(postList);
     }
 
-    private List<PostDto> getPostDtos(Optional<List<Post>> postList) {
+    private List<PostResponse.PostDto> getPostDtos(Optional<List<Post>> postList) {
         List<Post> findPost = postList.orElseThrow(() -> new GeneralException(ErrorStatus.POST_NOT_FOUND));
-        List<PostDto> result = new ArrayList<>();
+        List<PostResponse.PostDto> result = new ArrayList<>();
 
         for (Post post : findPost) {
-            result.add(PostDto.of(post));
+            result.add(PostResponse.PostDto.of(post));
         }
 
         return result;

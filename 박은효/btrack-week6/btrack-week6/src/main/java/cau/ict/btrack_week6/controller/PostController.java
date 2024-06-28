@@ -1,9 +1,7 @@
 package cau.ict.btrack_week6.controller;
 
-import cau.ict.btrack_week6.dto.NewPostDto;
-import cau.ict.btrack_week6.dto.PostDto;
+import cau.ict.btrack_week6.dto.PostResponse;
 import cau.ict.btrack_week6.entity.Member;
-import cau.ict.btrack_week6.entity.Post;
 import cau.ict.btrack_week6.service.PostService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -25,30 +23,30 @@ public class PostController {
     }
 
     @PostMapping("/create")
-    public PostDto create(String title, String body, HttpServletRequest request) {
+    public PostResponse.PostDto create(String title, String body, HttpServletRequest request) {
         Member member = getMember(request);
         Long postId = postService.createPost(title, body, member);
         return postService.readOneById(postId);
     }
 
     @GetMapping("/find/one/title/{title}")
-    public PostDto findOneByTitle(@PathVariable String title) {
+    public PostResponse.PostDto findOneByTitle(@PathVariable String title) {
         return postService.readOneByTitle(title);
     }
 
     @GetMapping("/find/all/member")
-    public List<PostDto> findAllByMember(HttpServletRequest request) {
+    public List<PostResponse.PostDto> findAllByMember(HttpServletRequest request) {
         Member member = getMember(request);
         return postService.readAllByMember(member);
     }
 
     @GetMapping("/find/all")
-    public List<PostDto> findAll() {
+    public List<PostResponse.PostDto> findAll() {
         return postService.readAll();
     }
 
     @PostMapping("/update")
-    public void update(Long id, @RequestBody PostDto postDto) {
+    public void update(Long id, @RequestBody PostResponse.PostDto postDto) {
         postService.updatePost(id, postDto.getTitle(), postDto.getBody());
     }
 

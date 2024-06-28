@@ -1,7 +1,7 @@
 package cau.ict.btrack_week6.controller;
 
 import cau.ict.btrack_week6.converter.MemberConverter;
-import cau.ict.btrack_week6.dto.MemberDto;
+import cau.ict.btrack_week6.dto.MemberResponse;
 import cau.ict.btrack_week6.entity.Member;
 import cau.ict.btrack_week6.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class MemberController {
 
     @PostMapping("/member/new")
     public Member join(String name, String password) {
-        MemberDto memberDto = new MemberDto(name, password);
+        MemberResponse.MemberDto memberDto = new MemberResponse.MemberDto(name, password);
         Member member = MemberConverter.toMember(memberDto);
         memberService.join(member);
 
