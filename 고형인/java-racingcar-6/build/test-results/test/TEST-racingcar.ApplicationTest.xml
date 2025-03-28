@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="racingcar.ApplicationTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-03-27T12:52:02" hostname="gohyeong-in-ui-MacBookAir.local" time="0.446">
+  <properties/>
+  <testcase name="전진_정지()" classname="racingcar.ApplicationTest" time="0.446">
+    <failure message="java.lang.AssertionError: &#10;Expecting actual:&#10;  &quot;&quot;&#10;to contain:&#10;  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]&#10;but could not find:&#10;  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]&#10; " type="java.lang.AssertionError">java.lang.AssertionError: 
+Expecting actual:
+  &quot;&quot;
+to contain:
+  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]
+but could not find:
+  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]
+ 
+	at racingcar.ApplicationTest.lambda$전진_정지$0(ApplicationTest.java:20)
+	at camp.nextstep.edu.missionutils.test.Assertions.lambda$assertRandomTest$4(Assertions.java:89)
+	at org.junit.jupiter.api.AssertTimeout.lambda$assertTimeoutPreemptively$2(AssertTimeout.java:102)
+	at org.junit.jupiter.api.AssertTimeout.lambda$assertTimeoutPreemptively$4(AssertTimeout.java:138)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+</failure>
+  </testcase>
+  <system-out><![CDATA[
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
