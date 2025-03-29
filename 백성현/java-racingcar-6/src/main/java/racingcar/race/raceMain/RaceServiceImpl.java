@@ -7,7 +7,7 @@ public class RaceServiceImpl implements RaceService {
     @Override
     public RaceState getState() {
         int random_number = Randoms.pickNumberInRange(0,9);
-        System.out.println(random_number);
+//        System.out.println(random_number);  // 디버깅용
 
         if(random_number >= 4) {
             return RaceState.GO;

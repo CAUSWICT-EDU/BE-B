@@ -7,6 +7,16 @@ public class RaceCar {
     private int count;  // "-" 출력할 개수
     private RaceState state;
     private StringBuilder bar = new StringBuilder("");
+    private RaceState curr_state;
+
+
+    public RaceState getCurr_state() {
+        return curr_state;
+    }
+
+    public void setCurr_state(RaceState curr_state) {
+        this.curr_state = curr_state;
+    }
 
     public StringBuilder getBar() {
         return bar;
@@ -14,6 +24,11 @@ public class RaceCar {
 
     public void setBar(StringBuilder bar) {
         this.bar = bar;
+    }
+
+
+    public RaceCar(RaceState state) {
+        this.state = state;
     }
 
     public RaceCar(String car_name) {

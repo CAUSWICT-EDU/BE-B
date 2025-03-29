@@ -11,4 +11,6 @@ public interface RaceCarService {
     RaceCar saveCarInfo(String name, RaceState state);
 
     RaceCar saveTotalCount(int total_count);
+
+    void savaCurrentState(RaceCar car, RaceState state);
 }

@@ -21,4 +21,9 @@ public class RaceCarServiceImpl implements RaceCarService {
     public RaceCar saveTotalCount(int total_count) {
         return null;
     }
+
+    @Override
+    public void savaCurrentState(RaceCar car, RaceState state) {
+        car.setState(state);
+    }
 }
