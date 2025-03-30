@@ -9,11 +9,14 @@ public class Application {
         // 자동차 이름 입력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = sc.nextLine();
-        racingcar [] cars = new racingcar[3];
-        if (carNames.split(",").length != 3) { // 자동차 이름은 3개여야 함
-            throw new IllegalArgumentException("자동차 이름은 3개를 입력해야 합니다.");
-        }
         String[] carName = carNames.split(",");
+        // 자동차 이름 유효성 검사
+        for (String name : carName) {
+            if (name.isBlank() || name.strip().length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하로 입력해야 합니다.");
+            }
+        }
+        racingcar[] cars = new racingcar[carName.length];
         for (int i = 0; i < carName.length; i++) {
             // 자동차 객체 생성
             cars[i] = new racingcar(carName[i].strip());
