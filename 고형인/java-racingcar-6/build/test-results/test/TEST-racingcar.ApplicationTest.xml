@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="racingcar.ApplicationTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-03-27T12:52:02" hostname="gohyeong-in-ui-MacBookAir.local" time="0.446">
+<testsuite name="racingcar.ApplicationTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2025-03-31T10:48:52" hostname="gohyeong-in-ui-MacBookAir.local" time="0.462">
   <properties/>
-  <testcase name="전진_정지()" classname="racingcar.ApplicationTest" time="0.446">
-    <failure message="java.lang.AssertionError: &#10;Expecting actual:&#10;  &quot;&quot;&#10;to contain:&#10;  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]&#10;but could not find:&#10;  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]&#10; " type="java.lang.AssertionError">java.lang.AssertionError: 
+  <testcase name="이름에_대한_예외_처리()" classname="racingcar.ApplicationTest" time="0.032"/>
+  <testcase name="전진_정지()" classname="racingcar.ApplicationTest" time="0.429">
+    <failure message="java.lang.AssertionError: &#10;Expecting actual:&#10;  &quot;경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분&#10;경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분&#10;실행 결과&#10;pobi : -&#10;woni :&quot;&#10;to contain:&#10;  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]&#10;but could not find:&#10;  [&quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]&#10; " type="java.lang.AssertionError">java.lang.AssertionError: 
 Expecting actual:
-  &quot;&quot;
+  &quot;경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분
+실행 결과
+pobi : -
+woni :&quot;
 to contain:
   [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]
 but could not find:
-  [&quot;pobi : -&quot;, &quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]
+  [&quot;woni : &quot;, &quot;최종 우승자 : pobi&quot;]
  
 	at racingcar.ApplicationTest.lambda$전진_정지$0(ApplicationTest.java:20)
 	at camp.nextstep.edu.missionutils.test.Assertions.lambda$assertRandomTest$4(Assertions.java:89)
@@ -20,7 +25,13 @@ but could not find:
 	at java.base/java.lang.Thread.run(Thread.java:842)
 </failure>
   </testcase>
-  <system-out><![CDATA[
+  <system-out><![CDATA[경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분
+실행 결과
+pobi : -
+woni :
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

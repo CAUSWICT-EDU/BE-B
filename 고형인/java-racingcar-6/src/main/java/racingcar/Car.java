@@ -14,4 +14,12 @@ public class Car { // 자동차 정보
             this.distance++;
         }
     }
+
+    public void printDistance() {
+        System.out.print(this.name + " : ");
+        for (int i=0;i<this.distance;i++) {
+            System.out.print("-");
+        }
+        System.out.print("\n");
+    }
 }
