@@ -2,7 +2,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 //import java.util.Arrays;
 
 public class Application {
@@ -25,6 +25,13 @@ public class Application {
             cars[i] = new Car(carNames[i]);
         }
 
-
+        // process - moveForward, printStatus
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars){
+                car.moveForward();
+                car.printStatus();
+            }
+        }
     }
 }
