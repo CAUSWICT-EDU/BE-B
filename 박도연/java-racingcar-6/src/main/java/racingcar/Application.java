@@ -1,5 +1,4 @@
 package racingcar;
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 //import java.util.Scanner;
@@ -14,9 +13,10 @@ public class Application {
 
         // initialize - 2 시도 횟수 입력
         System.out.println("시도할 회수는 몇회인가요?");
-        String tryCount = Console.readLine();
+        String sTryCount = Console.readLine();
 
         // TODO: tryCount에 대한 exception 구현
+        int iTryCount = Integer.parseInt(sTryCount);
 
         // TODO: Car 객체 구성할 때 name과 trycount에 대한 exception 구현
         // initalize - 3 자동차 객체 생성
@@ -27,11 +27,26 @@ public class Application {
 
         // process - moveForward, printStatus
         System.out.println("실행 결과");
-        for (int i = 0; i < tryCount; i++) {
+        for (int i = 0; i < iTryCount; i++) {
             for (Car car : cars){
                 car.moveForward();
                 car.printStatus();
             }
+            System.out.println();
         }
+
+//        // terminate
+//        System.out.println("최종우승자 : ");
+//        int maxStep = 0;
+//        for (Car car : cars){
+//            if (car.getStep() > maxStep){
+//                maxStep = car.getStep();
+//            }
+//        }
+//        for (Car car : cars){
+//            if (car.getStep() == maxStep){
+//                System.out.println(car.getName());
+//            }
+//        }
     }
 }
