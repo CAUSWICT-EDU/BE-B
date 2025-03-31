@@ -1,4 +1,5 @@
 package racingcar;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
 //    private static final int MAX_NAME_LENGTH = 5; (Position 검증?)
@@ -22,6 +23,20 @@ public class Car {
 
     public String getName(){
         return name;
+    }
+
+    public  void moveForward() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            step++;
+        }
+    }
+
+    public void printStatus() {
+        System.out.print(this.getName() + " : ");
+        for (int i = 0; i < step; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     public void printInfo() {
