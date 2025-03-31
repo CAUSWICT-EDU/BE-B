@@ -7,12 +7,12 @@ public class Car {
 
     public Car(String _name) {
         this.name = _name;
-        step = 0;
-
+        this.step = 0;
     }
+
     //  TODO: 자동차 이름 exception
 
-    public void accelerate( void ){
+    public void accelerate(){
         step++;
     }
 
@@ -24,4 +24,7 @@ public class Car {
         return name;
     }
 
+    public void printInfo() {
+        System.out.println("이름: " + name + ", 현재 위치: " + step);
+    }
 }
