@@ -35,18 +35,24 @@ public class Application {
             System.out.println();
         }
 
-//        // terminate
-//        System.out.println("최종우승자 : ");
-//        int maxStep = 0;
-//        for (Car car : cars){
-//            if (car.getStep() > maxStep){
-//                maxStep = car.getStep();
-//            }
-//        }
-//        for (Car car : cars){
-//            if (car.getStep() == maxStep){
-//                System.out.println(car.getName());
-//            }
-//        }
+        // terminate
+        System.out.print("최종우승자 : ");
+        int maxStep = 0;
+        for (Car car : cars){
+            if (car.getStep() > maxStep){
+                maxStep = car.getStep();
+            }
+        }
+        StringBuilder winner = new StringBuilder();
+        for (Car car : cars) {
+            if (car.getStep() != maxStep) {
+                continue;
+            }
+            if (winner.length() > 0) {
+                winner.append(", ");
+            }
+            winner.append(car.getName());
+        }
+        System.out.println(winner);
     }
 }
