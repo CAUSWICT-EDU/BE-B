@@ -2,16 +2,29 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-//    private static final int MAX_NAME_LENGTH = 5; (Position 검증?)
+    private static final int MAX_NAME_LENGTH = 5;
     private final String name;
     private int step;
 
     public Car(String _name) {
+        this.checkName(_name);
         this.name = _name;
         this.step = 0;
     }
 
-    //  TODO: 자동차 이름 exception
+    private void checkName(String _name) {
+        if (_name == null || _name.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 빈 값이 될 수 없습니다.");
+        }
+
+        if (_name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+
+        if (_name.contains(",")) {
+            throw new IllegalArgumentException("자동차 이름에 ','를 포함할 수 없습니다.");
+        }
+    }
 
     public void accelerate(){
         step++;
@@ -27,7 +40,7 @@ public class Car {
 
     public  void moveForward() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            step++;
+            accelerate();
         }
     }
 
