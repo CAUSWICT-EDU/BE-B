@@ -1,9 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
-//import java.util.Scanner;
-//import java.util.Arrays;
-
 public class Application {
     public static void main(String[] args) {
         // initialize - 1 자동차 목록 입력
@@ -36,7 +33,6 @@ public class Application {
         }
 
         // terminate
-        System.out.print("최종우승자 : ");
         int maxStep = 0;
         for (Car car : cars){
             if (car.getStep() > maxStep){
@@ -53,6 +49,6 @@ public class Application {
             }
             winner.append(car.getName());
         }
-        System.out.println(winner);
+        System.out.println("최종 우승자 : " + winner);
     }
 }
