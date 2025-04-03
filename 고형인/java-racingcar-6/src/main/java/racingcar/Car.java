@@ -4,6 +4,11 @@ public class Car { // 자동차 정보
     public String name;
     public int distance;
 
+    public Car() {
+        this.name = "Car0";
+        this.distance = 0;
+    }
+
     public Car(String name) {
         this.name = name;
         this.distance = 0;

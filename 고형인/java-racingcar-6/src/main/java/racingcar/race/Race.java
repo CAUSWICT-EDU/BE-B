@@ -16,13 +16,6 @@ public class Race {
         this.maxDistance = 0;
     }
 
-    public static void checkName(String carName) {
-        if (carName.length() > 5
-        || carName.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하입니다.");
-        }
-    }
-
     public Race(String carNames) {
         // 자동차 동적 배열 리스트에 자동차 넣기
         this.cars = new ArrayList<>();
@@ -32,6 +25,13 @@ public class Race {
             checkName(carName);
             // 객체 추가
             this.cars.add(new Car(carName));
+        }
+    }
+
+    public static void checkName(String carName) {
+        if (carName.length() > 5
+        || carName.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하입니다.");
         }
     }
 
