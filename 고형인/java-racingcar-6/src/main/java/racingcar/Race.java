@@ -1,8 +1,8 @@
 package racingcar;
 
 // 외부 라이브러리 사용할 경우 gradle 수동 수정 필요
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList; // 자바 표준 라이브러리 (외부 라이브러리 아님)
+import java.util.Random;
 
 public class Race {
     // 자동차 동적 배열 르시트
@@ -37,7 +37,9 @@ public class Race {
     // 각 경기
     public void eachRace() {
         for (Car car : cars ) {
-            int ranNum = Randoms.pickNumberInRange(0,9);
+            Random random = new Random();
+            int ranNum = random.nextInt(10);
+
             car.move(ranNum);
             car.printDistance();
             max(car.distance);
