@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.race.Race;
 import racingcar.service.InputService;
 import racingcar.serviceimpl.CarNameInputServiceImpl;
 import racingcar.serviceimpl.CountInputServiceImpl;

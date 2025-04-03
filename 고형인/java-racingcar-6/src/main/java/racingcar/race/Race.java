@@ -1,16 +1,24 @@
-package racingcar;
+package racingcar.race;
 
 // 외부 라이브러리 사용할 경우 gradle 수동 수정 필요
+import racingcar.Car;
+
 import java.util.ArrayList; // 자바 표준 라이브러리 (외부 라이브러리 아님)
 import java.util.Random;
 
 public class Race {
-    // 자동차 동적 배열 르시트
+    // 자동차 동적 배열 리스트
     public ArrayList<Car> cars;
-    public int maxDistance = 0;
+    public int maxDistance;
+
+    public Race() {
+        this.cars = new ArrayList<>();
+        this.maxDistance = 0;
+    }
 
     public static void checkName(String carName) {
-        if (carName.length() > 5) {
+        if (carName.length() > 5
+        || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하입니다.");
         }
     }
