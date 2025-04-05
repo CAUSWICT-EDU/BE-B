@@ -3,6 +3,8 @@ package racingcar.race.raceCar;
 
 import racingcar.race.raceMain.RaceState;
 
+import java.util.Map;
+
 public interface RaceCarService {
 
     // 자동차 이름 등록
@@ -12,5 +14,7 @@ public interface RaceCarService {
 
     RaceCar saveTotalCount(int total_count);
 
-    void savaCurrentState(RaceCar car, RaceState state);
+    void saveCurrentState(RaceCar car, RaceState state);
+
+    void getMaxValue(Map<RaceCar, Integer> winnerCar, Map<String, RaceCar> carMap, String[] cars);
 }
