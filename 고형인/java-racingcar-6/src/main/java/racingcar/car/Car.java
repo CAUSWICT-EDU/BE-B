@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 public class Car { // 자동차 정보
     public String name;
@@ -28,7 +28,7 @@ public class Car { // 자동차 정보
     public int getDistance() {
         return this.distance;
     }
-    
+
     public void move(int ranNum) {
         if (ranNum >= 4) {
             this.distance++;

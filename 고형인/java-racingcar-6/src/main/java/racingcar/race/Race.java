@@ -1,7 +1,7 @@
 package racingcar.race;
 
 // 외부 라이브러리 사용할 경우 gradle 수동 수정 필요
-import racingcar.Car;
+import racingcar.car.Car;
 
 import java.util.ArrayList; // 자바 표준 라이브러리 (외부 라이브러리 아님)
 import java.util.Random;
