@@ -15,10 +15,12 @@ public class input {
         String[] namelist = null;
         try {
             namelist = Console.readLine().split(",");
-            if (namelist.length <5) {
-                throw()
+            if (namelist.length >5||namelist.length <0) {
+                throw new IllegalArgumentException("최대 5개의 이름을 입력할 수 있습니다.");
             }
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
         }
         for (String j : namelist)
             carlist.add(new Car(j));
