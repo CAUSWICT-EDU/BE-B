@@ -4,6 +4,7 @@ import racingcar.race.Race;
 import racingcar.service.InputService;
 import racingcar.serviceimpl.CarNameInputServiceImpl;
 import racingcar.serviceimpl.CountInputServiceImpl;
+import racingcar.view.RaceResult;
 
 public class Application {
 
@@ -23,7 +24,7 @@ public class Application {
         Race race = new Race(rawCarList);
         race.start(time);
 
-        // 우스앚
-        race.winner();
+        // 우승자
+        RaceResult.printWinners(race);
     }
 }

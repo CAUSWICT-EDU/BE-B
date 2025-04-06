@@ -1,6 +1,7 @@
 package racingcar.serviceimpl;
 
 import racingcar.service.InputService;
+
 import java.util.Scanner;
 
 // 자동차 입력 받기

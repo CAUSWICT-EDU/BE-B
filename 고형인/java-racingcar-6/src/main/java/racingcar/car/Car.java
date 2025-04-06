@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import java.util.Random;
+
 public class Car { // 자동차 정보
     public String name;
     public int distance;
@@ -29,17 +31,19 @@ public class Car { // 자동차 정보
         return this.distance;
     }
 
-    public void move(int ranNum) {
+    public void tryMove() {
+        Random random = new Random();
+        int ranNum = random.nextInt(10);
+
         if (ranNum >= 4) {
             this.distance++;
         }
     }
 
-    public void printDistance() {
-        System.out.print(this.name + " : ");
-        for (int i=0;i<this.distance;i++) {
-            System.out.print("-");
+    public void checkName() {
+        if (this.name.length() > 5
+                || this.name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하입니다.");
         }
-        System.out.print("\n");
     }
 }

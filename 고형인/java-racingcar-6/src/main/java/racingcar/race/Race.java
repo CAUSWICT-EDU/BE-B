@@ -2,14 +2,15 @@ package racingcar.race;
 
 // 외부 라이브러리 사용할 경우 gradle 수동 수정 필요
 import racingcar.car.Car;
+import racingcar.view.RaceResult;
 
 import java.util.ArrayList; // 자바 표준 라이브러리 (외부 라이브러리 아님)
-import java.util.Random;
+import java.util.List;
 
 public class Race {
     // 자동차 동적 배열 리스트
     public ArrayList<Car> cars;
-    public int maxDistance;
+    private int maxDistance = 0;
 
     public Race() {
         this.cars = new ArrayList<>();
@@ -17,21 +18,12 @@ public class Race {
     }
 
     public Race(String carNames) {
-        // 자동차 동적 배열 리스트에 자동차 넣기
-        this.cars = new ArrayList<>();
+        this.cars = new ArrayList<>(); // 자동차 동적 배열 리스트에 자동차 넣기
         String[] carNameList = carNames.split(",");
         for (String carName : carNameList) {
-            // 자동차 이름 확인
-            checkName(carName);
-            // 객체 추가
-            this.cars.add(new Car(carName));
-        }
-    }
-
-    public static void checkName(String carName) {
-        if (carName.length() > 5
-        || carName.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하입니다.");
+            Car car = new Car(carName);
+            car.checkName(); // 자동차 이름 확인
+            this.cars.add(car); // 자동차 객체 추가
         }
     }
 
@@ -45,12 +37,9 @@ public class Race {
     // 각 경기
     public void eachRace() {
         for (Car car : cars ) {
-            Random random = new Random();
-            int ranNum = random.nextInt(10);
-
-            car.move(ranNum);
-            car.printDistance();
-            max(car.distance);
+            car.tryMove();
+            max(car.distance); // 최대 거리 찾기
+            RaceResult.printCarPosition(car); // 자동차 현재 상황 출력
         }
     }
 
@@ -63,23 +52,13 @@ public class Race {
         }
     }
 
-    public void printWinner() {
-        int counter = 0;
-        for (Car car : cars) {
-            if (car.distance == maxDistance && counter == 0) {
-                System.out.print(car.name);
-                counter++;
-            }
-            else if (car.distance == maxDistance && counter > 0) {
-                System.out.print(", " + car.name);
-                counter++;
+    public List<Car> getWinners() {
+        List<Car> winners = new ArrayList<>();
+        for (Car car: cars) {
+            if (car.distance == maxDistance) {
+                winners.add(car);
             }
         }
-    }
-
-    // 우승자
-    public void winner() {
-        System.out.print("최종 우승자 : ");
-        printWinner();
+        return winners;
     }
 }
