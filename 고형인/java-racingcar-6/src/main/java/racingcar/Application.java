@@ -11,20 +11,15 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        // 입력 받기
         InputService carNameInputService = new CarNameInputServiceImpl();
         InputService countInputService = new CountInputServiceImpl();
 
-        // 자동차 이름 쌩자 저장
-        String rawCarList = carNameInputService.getInput();
-        // 횟수 입력 받아서 time에 저장
-        int time = Integer.parseInt(countInputService.getInput());
+        String rawCarList = carNameInputService.getInput(); // 자동차 이름 입력
+        int time = Integer.parseInt(countInputService.getInput()); // 시도 횟수 입력
 
-        // 레이싱 가보쟈
         Race race = new Race(rawCarList);
-        race.start(time);
+        race.start(time); // 레이싱 (time)번 수행 시작
 
-        // 우승자
-        RaceResult.printWinners(race);
+        RaceResult.printWinners(race); // 우승자 출력
     }
 }

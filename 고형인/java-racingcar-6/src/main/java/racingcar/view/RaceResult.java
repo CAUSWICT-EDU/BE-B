@@ -11,7 +11,7 @@ public class RaceResult {
 
         System.out.print("최종 우승자 : ");
         for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i).name);
+            System.out.print(winners.get(i).getCarName());
             if (i < winners.size() - 1) {
                 System.out.print(", ");
             }

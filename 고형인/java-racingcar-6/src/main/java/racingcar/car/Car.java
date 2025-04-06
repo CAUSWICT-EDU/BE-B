@@ -3,10 +3,9 @@ package racingcar.car;
 import java.util.Random;
 
 public class Car { // 자동차 정보
-    public String name;
-    public int distance;
+    private String name;
+    private int distance;
 
-    // 기본 생성자
     public Car() {
         this.name = "Car0";
         this.distance = 0;
