@@ -24,4 +24,4 @@
     - 최종 우승자는 `최종 우승자 : ${name}` 형식으로 출력. 여러명일 경우 구분자로 나누어 출력한다. 
 
 ## exception
-- `IllegalArgumentException`예외 출력
+- `IllegalArgumentException`예외 출력 후 프로그램 terminate
