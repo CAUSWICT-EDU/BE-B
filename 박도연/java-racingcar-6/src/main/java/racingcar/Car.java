@@ -1,15 +1,17 @@
+package racingcar;
+
 public class Car {
     private final String name;
     private int position = 0;
 
-    public Car() {}
+    public Car() { this.name = null; }
     public Car(String name) {
         this.name = name;
     }
-    public String GetName() { return name; }
-    public int GetPosition() { return position; }
-    public void SetPosition(int position) { this.position = position; }
-    public void Move(MovingStrategy strategy) {
+    public String getName() { return name; }
+    public int getPosition() { return position; }
+    public void setPosition(int position) { this.position = position; }
+    public void strategyMove(MovingStrategy strategy) {
         if (strategy.canMove()) {
             position++;
         }
