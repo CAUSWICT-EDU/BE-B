@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.race.contorll.input.getRaceCarInputService;
-import racingcar.race.contorll.input.getRaceCarInputServiceImpl;
-import racingcar.race.contorll.print.printResultService;
-import racingcar.race.contorll.print.printResultServiceImpl;
+import racingcar.race.contorll.input.GetRaceCarInputService;
+import racingcar.race.contorll.input.GetRaceCarInputServiceImpl;
+import racingcar.race.contorll.print.PrintResultService;
+import racingcar.race.contorll.print.PrintResultServiceImpl;
 import racingcar.race.raceCar.RaceCar;
 import racingcar.race.raceCar.RaceCarService;
 import racingcar.race.raceCar.RaceCarServiceImpl;
@@ -15,8 +15,8 @@ public class Application {
         // TODO: 프로그램 구현
 
         RaceCarService raceCarService = new RaceCarServiceImpl();
-        getRaceCarInputService getRaceCarInputService = new getRaceCarInputServiceImpl();
-        printResultService printResultService = new printResultServiceImpl();
+        GetRaceCarInputService getRaceCarInputService = new GetRaceCarInputServiceImpl();
+        PrintResultService printResultService = new PrintResultServiceImpl();
 
 
         // 레이싱카 이름 입력받기

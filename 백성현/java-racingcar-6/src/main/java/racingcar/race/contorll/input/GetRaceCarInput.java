@@ -2,16 +2,16 @@ package racingcar.race.contorll.input;
 
 import java.util.List;
 
-public class getRaceCarInput {
+public class GetRaceCarInput {
     private String carName;  // 레이싱카 이름
     private List<String> cars;  // 레이싱카 리스트
     private int countTry;  // 시도 횟수
 
     // 기본 생성자
-    public getRaceCarInput() {
+    public GetRaceCarInput() {
     }
 
-    public getRaceCarInput(String carName) {
+    public GetRaceCarInput(String carName) {
         cars.add(carName);
     }
 

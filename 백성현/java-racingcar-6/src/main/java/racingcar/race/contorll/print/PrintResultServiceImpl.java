@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class printResultServiceImpl implements printResultService {
+public class PrintResultServiceImpl implements PrintResultService {
     RaceService raceService = new RaceServiceImpl();
     RaceCarService raceCarService = new RaceCarServiceImpl();
 

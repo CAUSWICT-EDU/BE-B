@@ -1,6 +1,6 @@
 package racingcar.race.contorll.input;
 
-public interface getRaceCarInputService {
+public interface GetRaceCarInputService {
 
     String[] getCarInput();
 

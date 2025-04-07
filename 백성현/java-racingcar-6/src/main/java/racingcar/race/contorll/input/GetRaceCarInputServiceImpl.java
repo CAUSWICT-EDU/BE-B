@@ -2,7 +2,7 @@ package racingcar.race.contorll.input;
 
 import java.util.Scanner;
 
-public class getRaceCarInputServiceImpl implements getRaceCarInputService {
+public class GetRaceCarInputServiceImpl implements GetRaceCarInputService {
 
     @Override
     public String[] getCarInput() {
