@@ -11,6 +11,7 @@ public class RacingGame{
                 car.strategyMove(strategy);
             }
             cars.printInfo();
+            System.out.println();
         }
     }
 }
