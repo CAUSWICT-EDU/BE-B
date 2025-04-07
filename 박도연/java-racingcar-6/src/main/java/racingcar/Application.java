@@ -19,5 +19,6 @@ public class Application {
         RacingGame.playGame(cars, tryCount, new RandomMovingStrategy());
 
         System.out.println("실행 결과");
+        RacingGame.printWinners(cars);
     }
 }

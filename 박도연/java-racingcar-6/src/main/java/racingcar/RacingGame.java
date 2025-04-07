@@ -1,6 +1,6 @@
 package racingcar;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame{
     private RacingGame() {};
@@ -13,5 +13,10 @@ public class RacingGame{
             cars.printInfo();
             System.out.println();
         }
+    }
+
+    public static void printWinners(Cars cars) {
+        List<String> winners = cars.getWinners();
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
