@@ -23,10 +23,27 @@ public class Cars {
 
     public void printInfo() {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : ");
-            for (int i = 0; i < car.getPosition(); i++)
+            System.out.print(car.getName() + " : ");
+            for (int i = 0; i < car.getPosition(); i++) {
                 System.out.print("-");
+            }
+            System.out.println();
         }
-        System.out.println();
+    }
+
+    public List<String> getWinners() {
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
     }
 }
