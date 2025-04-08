@@ -1,7 +1,18 @@
 package racingcar;
 
+// test
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Race race = new Race();
+        RaceInput raceInput = new RaceInput();
+        raceInput.InputCarNames();
+        race.setCars(raceInput.getCarNames());
+        raceInput.InputRound();
+        for (int i = 0; i < raceInput.getRounds(); i++) {
+            race.doRace();
+            race.printResult();
+        }
+        race.getWinner();
     }
 }
