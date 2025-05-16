@@ -26,6 +26,10 @@ public class Book extends BaseEntity {
 
     private String description;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Rent> rentList = new ArrayList<>();
 

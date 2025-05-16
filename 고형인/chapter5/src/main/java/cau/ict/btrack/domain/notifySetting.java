@@ -31,6 +31,10 @@ public class notifySetting extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private setNotify setBookReturn;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @OneToMany(mappedBy = "notify_setting", cascade = CascadeType.ALL)
     private List<Announcement> announcementList = new ArrayList<>();
 

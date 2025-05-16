@@ -22,6 +22,6 @@ public class Category extends BaseEntity {
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<Book> book = new ArrayList<>();
+    private List<Book> bookList = new ArrayList<>();
 
 }
