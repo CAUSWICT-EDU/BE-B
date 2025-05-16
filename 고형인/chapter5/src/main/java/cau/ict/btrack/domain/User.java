@@ -1,6 +1,7 @@
 package cau.ict.btrack.domain;
 
 import cau.ict.btrack.domain.enums.Gender;
+import cau.ict.btrack.domain.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,9 +24,11 @@ public class User {
 
     private String phone;
 
-    private Integer gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     private LocalDate inactiveDate;
 
