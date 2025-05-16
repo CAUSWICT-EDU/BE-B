@@ -1,10 +1,9 @@
 package cau.ict.btrack.domain.mapping;
 
+import cau.ict.btrack.domain.Book;
+import cau.ict.btrack.domain.User;
 import cau.ict.btrack.domain.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -23,5 +22,13 @@ public class Rent extends BaseEntity {
     private LocalDateTime whenRent;
 
     private LocalDateTime whenReturn;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
+    private Book book;
 
 }
