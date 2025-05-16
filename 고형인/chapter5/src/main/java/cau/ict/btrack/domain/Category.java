@@ -3,7 +3,6 @@ package cau.ict.btrack.domain;
 import cau.ict.btrack.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +18,7 @@ public class Category extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 30)
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)

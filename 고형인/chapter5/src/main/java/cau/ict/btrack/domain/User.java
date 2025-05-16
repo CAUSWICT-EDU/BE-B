@@ -23,16 +23,21 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 20)
     private String name;
 
+    @Column(nullable = false, length = 20)
     private String nickname;
 
+    @Column(nullable = false, length = 15)
     private String phone;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(10)")
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private Status status;
 
     private LocalDate inactiveDate;
