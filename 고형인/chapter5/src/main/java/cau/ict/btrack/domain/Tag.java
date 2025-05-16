@@ -1,11 +1,12 @@
 package cau.ict.btrack.domain;
 
 import cau.ict.btrack.domain.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import cau.ict.btrack.domain.mapping.bookTag;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,5 +20,8 @@ public class Tag extends BaseEntity {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
+    private List<bookTag> bookTagList = new ArrayList<>();
 
 }

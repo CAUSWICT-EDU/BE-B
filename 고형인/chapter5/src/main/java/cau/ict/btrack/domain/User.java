@@ -3,10 +3,14 @@ package cau.ict.btrack.domain;
 import cau.ict.btrack.domain.common.BaseEntity;
 import cau.ict.btrack.domain.enums.Gender;
 import cau.ict.btrack.domain.enums.Status;
+import cau.ict.btrack.domain.mapping.Rent;
+import cau.ict.btrack.domain.mapping.bookLikes;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,5 +36,14 @@ public class User extends BaseEntity {
     private Status status;
 
     private LocalDate inactiveDate;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Rent> rentList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<bookLikes> bookLikesList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<notifySetting> notifySettingList = new ArrayList<>();
 
 }

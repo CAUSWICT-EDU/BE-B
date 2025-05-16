@@ -5,6 +5,9 @@ import cau.ict.btrack.domain.enums.setNotify;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -24,5 +27,11 @@ public class notifySetting extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private setNotify setBookReturn;
+
+    @OneToMany(mappedBy = "notify_setting", cascade = CascadeType.ALL)
+    private List<Announcement> announcementList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "notify_setting", cascade = CascadeType.ALL)
+    private List<Marketing> marketingList = new ArrayList<>();
 
 }

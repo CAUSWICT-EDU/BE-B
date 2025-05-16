@@ -1,11 +1,12 @@
 package cau.ict.btrack.domain;
 
 import cau.ict.btrack.domain.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,5 +20,8 @@ public class Category extends BaseEntity {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Book> book = new ArrayList<>();
 
 }
