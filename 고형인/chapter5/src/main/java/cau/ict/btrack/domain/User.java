@@ -1,5 +1,6 @@
 package cau.ict.btrack.domain;
 
+import cau.ict.btrack.domain.common.BaseEntity;
 import cau.ict.btrack.domain.enums.Gender;
 import cau.ict.btrack.domain.enums.Status;
 import jakarta.persistence.*;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package cau.ict.btrack.domain;
 
+import cau.ict.btrack.domain.common.BaseEntity;
 import cau.ict.btrack.domain.enums.setNotify;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class notifySetting {
+public class notifySetting extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
