@@ -1,7 +1,7 @@
 package cau.ict.btrack.domain;
 
 import cau.ict.btrack.domain.common.BaseEntity;
-import cau.ict.btrack.domain.mapping.bookTag;
+import cau.ict.btrack.domain.mapping.BookTag;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +23,6 @@ public class Tag extends BaseEntity {
     private String name;
 
     @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
-    private List<bookTag> bookTagList = new ArrayList<>();
+    private List<BookTag> bookTagList = new ArrayList<>();
 
 }

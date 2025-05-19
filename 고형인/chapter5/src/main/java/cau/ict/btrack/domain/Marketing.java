@@ -22,7 +22,7 @@ public class Marketing extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "notification_setting_id")
-    private notifySetting notify_setting;
+    private NotifySetting notify_setting;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

@@ -4,7 +4,7 @@ import cau.ict.btrack.domain.common.BaseEntity;
 import cau.ict.btrack.domain.enums.Gender;
 import cau.ict.btrack.domain.enums.Status;
 import cau.ict.btrack.domain.mapping.Rent;
-import cau.ict.btrack.domain.mapping.bookLikes;
+import cau.ict.btrack.domain.mapping.BookLikes;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -46,9 +46,9 @@ public class User extends BaseEntity {
     private List<Rent> rentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<bookLikes> bookLikesList = new ArrayList<>();
+    private List<BookLikes> bookLikesList = new ArrayList<>();
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private notifySetting notifySetting;
+    private NotifySetting notifySetting;
 
 }

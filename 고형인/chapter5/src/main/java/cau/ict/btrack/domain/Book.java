@@ -2,8 +2,8 @@ package cau.ict.btrack.domain;
 
 import cau.ict.btrack.domain.common.BaseEntity;
 import cau.ict.btrack.domain.mapping.Rent;
-import cau.ict.btrack.domain.mapping.bookLikes;
-import cau.ict.btrack.domain.mapping.bookTag;
+import cau.ict.btrack.domain.mapping.BookLikes;
+import cau.ict.btrack.domain.mapping.BookTag;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,9 +34,9 @@ public class Book extends BaseEntity {
     private List<Rent> rentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<bookLikes> bookLikeList = new ArrayList<>();
+    private List<BookLikes> bookLikeList = new ArrayList<>();
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<bookTag> bookTagList = new ArrayList<>();
+    private List<BookTag> bookTagList = new ArrayList<>();
 
 }
