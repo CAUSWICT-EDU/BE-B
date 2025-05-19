@@ -20,18 +20,18 @@ public class notifySetting extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(5) DEFAULT 'ON')")
+    @Column(columnDefinition = "VARCHAR(5) DEFAULT 'ON'")
     private setNotify setAnnouncement;
 
-    @Column(columnDefinition = "VARCHAR(5) DEFAULT 'OFF')")
+    @Column(columnDefinition = "VARCHAR(5) DEFAULT 'OFF'")
     @Enumerated(EnumType.STRING)
     private setNotify setMarketing;
 
-    @Column(columnDefinition = "VARCHAR(5) DEFAULT 'ON')")
+    @Column(columnDefinition = "VARCHAR(5) DEFAULT 'ON'")
     @Enumerated(EnumType.STRING)
     private setNotify setBookReturn;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
