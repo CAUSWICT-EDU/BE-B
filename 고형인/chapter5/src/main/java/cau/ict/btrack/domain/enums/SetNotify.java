@@ -1,5 +1,5 @@
 package cau.ict.btrack.domain.enums;
 
-public enum setNotify {
+public enum SetNotify {
     ON, OFF
 }

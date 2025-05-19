@@ -1,7 +1,7 @@
 package cau.ict.btrack.domain;
 
 import cau.ict.btrack.domain.common.BaseEntity;
-import cau.ict.btrack.domain.enums.setNotify;
+import cau.ict.btrack.domain.enums.SetNotify;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,15 +21,15 @@ public class NotifySetting extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(5) DEFAULT 'ON'")
-    private setNotify setAnnouncement;
+    private SetNotify setAnnouncement;
 
     @Column(columnDefinition = "VARCHAR(5) DEFAULT 'OFF'")
     @Enumerated(EnumType.STRING)
-    private setNotify setMarketing;
+    private SetNotify setMarketing;
 
     @Column(columnDefinition = "VARCHAR(5) DEFAULT 'ON'")
     @Enumerated(EnumType.STRING)
-    private setNotify setBookReturn;
+    private SetNotify setBookReturn;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
