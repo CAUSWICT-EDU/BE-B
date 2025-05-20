@@ -1,10 +1,10 @@
-package umc.book.domain;
+package book.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.book.domain.base.BaseEntity;
-import umc.book.domain.enums.Gender;
-import umc.book.domain.enums.Status;
+import book.domain.base.BaseEntity;
+import book.domain.enums.Gender;
+import book.domain.enums.Status;
 
 import java.util.List;
 

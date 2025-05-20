@@ -1,10 +1,9 @@
-package umc.book.domain;
+package book.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.book.domain.base.BaseEntity;
-import umc.book.domain.enums.State;
-
+import book.domain.base.BaseEntity;
+import book.domain.enums.Status;
 
 @Getter
 @Entity
@@ -12,21 +11,21 @@ import umc.book.domain.enums.State;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 
-public class BookLike extends BaseEntity {
+public class RealBook extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(10)")
-    private State state;
 
+
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @OneToOne(mappedBy = "realBook")
+    private Rent rent;
 }

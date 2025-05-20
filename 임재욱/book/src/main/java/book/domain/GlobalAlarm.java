@@ -1,12 +1,9 @@
-package umc.book.domain;
+package book.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.book.domain.base.BaseEntity;
-import umc.book.domain.enums.AlarmKind;
-
-
-import java.util.List;
+import book.domain.base.BaseEntity;
+import book.domain.enums.AlarmKind;
 
 @Getter
 @Entity

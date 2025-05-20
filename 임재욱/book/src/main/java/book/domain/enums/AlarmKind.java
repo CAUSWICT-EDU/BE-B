@@ -1,3 +1,3 @@
-package umc.book.domain.enums;
+package book.domain.enums;
 
 public enum AlarmKind { SYSTEM, CUSTOM }

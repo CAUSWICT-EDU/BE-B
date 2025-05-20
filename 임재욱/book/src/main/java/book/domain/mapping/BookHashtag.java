@@ -1,10 +1,10 @@
-package umc.book.domain.mapping;
+package book.domain.mapping;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.book.domain.Book;
-import umc.book.domain.Hashtag;
-import umc.book.domain.base.BaseEntity;
+import book.domain.Book;
+import book.domain.Hashtag;
+import book.domain.base.BaseEntity;
 
 @Getter
 @Entity

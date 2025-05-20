@@ -1,9 +1,9 @@
-package umc.book.domain;
+package book.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.book.domain.base.BaseEntity;
-import umc.book.domain.mapping.BookHashtag;
+import book.domain.base.BaseEntity;
+import book.domain.mapping.BookHashtag;
 
 import java.util.List;
 

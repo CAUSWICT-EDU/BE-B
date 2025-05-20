@@ -1,8 +1,8 @@
-package umc.book.domain;
+package book.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.book.domain.base.BaseEntity;
+import book.domain.base.BaseEntity;
 
 import java.time.LocalDateTime;
 

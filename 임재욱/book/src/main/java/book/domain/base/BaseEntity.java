@@ -1,4 +1,4 @@
-package umc.book.domain.base;
+package book.domain.base;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
