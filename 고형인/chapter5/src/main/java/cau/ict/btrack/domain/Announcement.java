@@ -18,6 +18,7 @@ public class Announcement extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String title;
 
+    @Lob
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)

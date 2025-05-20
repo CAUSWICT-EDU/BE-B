@@ -24,6 +24,7 @@ public class Book extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String title;
 
+    @Lob
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
