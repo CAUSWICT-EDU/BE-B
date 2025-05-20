@@ -22,6 +22,6 @@ public class HasTag extends BaseEntity {
     @Column(length=20,nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "hasTag", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hastag", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookHasTag> bookHasTags = new ArrayList<>();
 }

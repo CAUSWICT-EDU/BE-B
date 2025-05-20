@@ -24,7 +24,7 @@ public class User extends BaseEntity {
     private String name;
 
     @Column(length=20,nullable=false)
-    private String nikname;
+    private String nickname;
 
     @Column(length=15)
     private String phoneNum;
@@ -35,7 +35,7 @@ public class User extends BaseEntity {
     @Column(length = 20, nullable = false, unique = true)
     private String loginId;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 60, nullable = false)
     private String password;
 
     @Column
