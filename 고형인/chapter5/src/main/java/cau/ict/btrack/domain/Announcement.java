@@ -25,8 +25,4 @@ public class Announcement extends BaseEntity {
     @JoinColumn(name = "notification_setting_id")
     private NotifySetting notify_setting;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
 }
