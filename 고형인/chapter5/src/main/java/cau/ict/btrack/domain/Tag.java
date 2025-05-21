@@ -22,7 +22,7 @@ public class Tag extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tag")
     private List<BookTag> bookTagList = new ArrayList<>();
 
 }

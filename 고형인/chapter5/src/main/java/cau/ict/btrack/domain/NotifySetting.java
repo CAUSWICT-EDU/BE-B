@@ -35,10 +35,10 @@ public class NotifySetting extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "notify_setting", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "notify_setting")
     private List<Announcement> announcementList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "notify_setting", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "notify_setting")
     private List<Marketing> marketingList = new ArrayList<>();
 
 }

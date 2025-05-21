@@ -31,13 +31,13 @@ public class Book extends BaseEntity {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book")
     private List<Rent> rentList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book")
     private List<BookLikes> bookLikeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book")
     private List<BookTag> bookTagList = new ArrayList<>();
 
 }
