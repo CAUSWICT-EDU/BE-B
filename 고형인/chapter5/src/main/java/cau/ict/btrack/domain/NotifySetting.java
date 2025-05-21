@@ -27,9 +27,7 @@ public class NotifySetting extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private SetNotify setMarketing;
 
-    @Column(columnDefinition = "VARCHAR(5) DEFAULT 'ON'")
-    @Enumerated(EnumType.STRING)
-    private SetNotify setBookReturn;
+    private Boolean  setBookReturn;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
