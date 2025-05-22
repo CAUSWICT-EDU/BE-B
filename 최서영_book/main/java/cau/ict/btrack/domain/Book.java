@@ -34,8 +34,5 @@ public class Book extends BaseEntity{
     private List<BookHasTag> bookHasTags = new ArrayList<>();
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Likes> likes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rental> rental = new ArrayList<>();
 }
