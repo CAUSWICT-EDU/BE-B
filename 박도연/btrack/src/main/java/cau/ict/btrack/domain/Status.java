@@ -13,7 +13,7 @@ import cau.ict.btrack.domain.enums.UserStatus;
 public class Status extends BaseEntity {
 
     @Id
-    private Integer userID;
+    private long userID;
 
     @MapsId
     @OneToOne(fetch = FetchType.LAZY)
